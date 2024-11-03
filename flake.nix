@@ -15,15 +15,13 @@
       "mac" = base.inputs.darwin.lib.darwinSystem {
         system = "aarch64-darwin";  # or x86_64-darwin
         modules = base.outputs.sharedModules ++ base.outputs.macModules ++ [
-          { config.vars = vars; }
           {
-            # Enable zsh
             programs.zsh = {
               enable = true;
             };
           }
         ];
-        specialArgs = { inherit vars; };
+        specialArgs = { inherit outputs.vars; };
       };
     };
 
