@@ -10,14 +10,12 @@
       # Simplified to just "mac"
       "mac" = base.inputs.darwin.lib.darwinSystem {
         system = "aarch64-darwin";  # or x86_64-darwin
-        modules = [
-          base.sharedModules
-          base.macModules
+        modules = base.outputs.sharedModules ++ base.outputs.macModules ++ [
           # Mac-specific shell customizations
           {
             programs.zsh = {
               enable = true;
-           };
+            };
           }
         ];
       };
