@@ -21,6 +21,8 @@
       };
     };
 
+    homeConfigurations = base.outputs.homeConfigurations;
+
     # nixosConfigurations = {
     #   "linux" = nixpkgs.lib.nixosSystem {
     #     system = "x86_64-linux";
