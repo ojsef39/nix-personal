@@ -2,12 +2,13 @@
   description = "personal nix configuration";
 
   inputs = {
-    base.url = "github:ojsef39/nix-base/dev";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     darwin.url = "github:lnl7/nix-darwin/master";
     home-manager.url = "github:nix-community/home-manager";
+    base.url = "github:ojsef39/nix-base";
   };
 
-  outputs = { self, base, darwin, home-manager }: {
+  outputs = { self, nixpkgs, darwin, home-manager, base }: {
     darwinConfigurations = {
       # Simplified to just "mac"
       "mac" = darwin.lib.darwinSystem {

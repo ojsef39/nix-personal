@@ -31,6 +31,7 @@ install-mac:
 		echo "==> Part 1/2 complete!"; \
 		echo "==> Please restart your shell and run 'make install' again!"; \
 		echo ""; \
+		exit 0; \
 	fi
 	@if command -v darwin-rebuild > /dev/null 2>&1; then \
 		echo "Nix-darwin is already installed"; \
