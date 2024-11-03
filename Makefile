@@ -80,6 +80,7 @@ install-linux:
 update-full:
 	@git reset HEAD --hard
 	@git pull --rebase
+	nix flake update
 	$(MAKE) update_
 
 update:
@@ -94,11 +95,9 @@ update_:
 	fi
 
 update-mac:
-	nix flake update
 	darwin-rebuild switch --flake .#mac
 
 update-linux:
-	nix flake update
 	sudo nixos-rebuild switch --flake .#linux
 
 lint:
