@@ -21,7 +21,7 @@
             };
           }
         ];
-        specialArgs = { inherit outputs.vars; };
+        specialArgs = { inherit vars; };
       };
     };
 
