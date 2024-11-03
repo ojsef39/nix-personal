@@ -5,7 +5,7 @@
     base.url = "github:ojsef39/nix-base/dev";
   };
 
-  outputs = { self, base }: let
+  outputs = { self, base, ... }: let
     vars = {
       user = "josefhofer";
       email = "me@jhofer.de";
@@ -15,7 +15,9 @@
       "mac" = base.inputs.darwin.lib.darwinSystem {
         system = "aarch64-darwin";  # or x86_64-darwin
         modules = base.outputs.sharedModules ++ base.outputs.macModules ++ [
+          { config.vars = vars; }
           {
+            # Enable zsh
             programs.zsh = {
               enable = true;
             };
