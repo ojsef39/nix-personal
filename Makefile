@@ -66,6 +66,8 @@ install-linux:
 	$(MAKE) message_installation_complete
 
 update:
+	@git reset HEAD --hard
+	@git pull --rebase
 	@if [ "$(UNAME)" = "Darwin" ]; then \
 		$(MAKE) update-mac; \
 	else \
