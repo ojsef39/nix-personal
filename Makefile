@@ -1,4 +1,4 @@
-.PHONY: install install-mac install-linux update update-mac update-linux help clean lint
+.PHONY: install install-mac install-linux update update-mac update-linux help clean lint message_installation_complete
 
 SHELL := /bin/bash
 UNAME := $(shell uname)
@@ -27,6 +27,10 @@ install-mac:
 	else \
 		echo "Installing Nix..." && \
 		curl -L https://nixos.org/nix/install | sh; \
+		echo ""; \
+		echo "==> Part 1/2 complete!"; \
+		echo "==> Please restart your shell and run 'make install' again!"; \
+		echo ""; \
 	fi
 	@if command -v darwin-rebuild > /dev/null 2>&1; then \
 		echo "Nix-darwin is already installed"; \
@@ -42,6 +46,7 @@ install-mac:
 		mkdir -p ~/.config/nix && \
 		echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf; \
 	fi
+	$(MAKE) message_installation_complete
 
 install-linux:
 	@if command -v nix > /dev/null 2>&1; then \
@@ -57,6 +62,7 @@ install-linux:
 		mkdir -p ~/.config/nix && \
 		echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf; \
 	fi
+	$(MAKE) message_installation_complete
 
 update:
 	@if [ "$(UNAME)" = "Darwin" ]; then \
@@ -81,3 +87,9 @@ clean:
 	@if command -v home-manager > /dev/null 2>&1; then \
 		home-manager generations; \
 	fi
+
+message_installation_complete:
+	@echo ""
+	@echo "==> Installation complete!"
+	@echo "==> Please restart your shell and run 'make update' to install config"
+	@echo ""
