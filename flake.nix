@@ -11,7 +11,8 @@
         user = "josefhofer";
         email = "me@jhofer.de"
       };
-    in 
+
+    in { 
       darwinConfigurations = {
         # Simplified to just "mac"
         "mac" = base.inputs.darwin.lib.darwinSystem {
@@ -25,6 +26,7 @@
             }
           ];
         };
+
       };
 
       # nixosConfigurations = {
@@ -47,5 +49,6 @@
       #     ];
       #   };
       # };
+    }
   };
 }
