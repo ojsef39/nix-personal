@@ -33,6 +33,17 @@ install-mac:
 		echo ""; \
 		exit 0; \
 	fi
+	# Install Homebrew if not installed
+	@command -v brew >/dev/null 2>&1 || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	# Setup channels
+	nix-channel --remove darwin || true
+	nix-channel --remove home-manager || true
+	nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
+	nix-channel --add https://github.com/LnL7/nix-darwin/archive/master.tar.gz darwin
+	nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+	nix-channel --update
+	# Install home-manager
+	nix-shell '<home-manager>' -A install
 	@if command -v darwin-rebuild > /dev/null 2>&1; then \
 		echo "Nix-darwin is already installed"; \
 	else \
