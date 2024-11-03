@@ -3,15 +3,17 @@
 
   inputs = {
     base.url = "github:ojsef39/nix-base/dev";
+    darwin.url = "github:lnl7/nix-darwin/master";
+    home-manager.url = "github:nix-community/home-manager";
   };
 
-  outputs = { self, nixpkgs, darwin, home-manager, base }: {
+  outputs = { self, base, darwin, home-manager }: {
     darwinConfigurations = {
       # Simplified to just "mac"
       "mac" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";  # or x86_64-darwin
         modules = [
-          base.sharedModuls
+          base.sharedModules
           base.macModules
           # Mac-specific shell customizations
           {
