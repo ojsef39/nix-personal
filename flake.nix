@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     darwin.url = "github:lnl7/nix-darwin/master";
     home-manager.url = "github:nix-community/home-manager";
-    base.url = "github:ojsef39/nix-base";
+    base.url = "github:ojsef39/nix-base/dev";
   };
 
   outputs = { self, nixpkgs, darwin, home-manager, base }: {
