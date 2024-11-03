@@ -13,7 +13,7 @@
   in {
     darwinConfigurations = {
       "mac" = base.inputs.darwin.lib.darwinSystem {
-        system = "aarch64-darwin";  # or x86_64-darwin
+        system = "aarch64-darwin";  # or "x86_64-darwin"
         modules = base.outputs.sharedModules ++ base.outputs.macModules ++ [
           {
             programs.zsh = {
