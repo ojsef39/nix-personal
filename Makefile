@@ -8,11 +8,12 @@ help:
 	@echo "  make install        - Install Nix and required components (auto-detects OS)"
 	@echo "  make install-mac    - Install Nix and Darwin components for MacOS"
 	@echo "  make install-linux  - Install Nix for Linux"
-	@echo "  make update        - Update system (auto-detects OS)"
-	@echo "  make update-mac    - Update MacOS specifically"
-	@echo "  make update-linux  - Update Linux specifically"
-	@echo "  make lint          - Check flake configuration"
-	@echo "  make clean         - Clean up old generations"
+	@echo "  make update-full    - Update system (auto-detects OS, RESETS LOCAL REPO)"
+	@echo "  make update         - Update system (auto-detects OS, only updates base)"
+	@echo "  make update-mac     - Update MacOS specifically"
+	@echo "  make update-linux   - Update Linux specifically"
+	@echo "  make lint           - Check flake configuration"
+	@echo "  make clean          - Clean up old generations"
 
 install:
 	@if [ "$(UNAME)" = "Darwin" ]; then \
@@ -76,12 +77,16 @@ install-linux:
 	fi
 	$(MAKE) message_installation_complete
 
-update-reset:
+update-full:
 	@git reset HEAD --hard
 	@git pull --rebase
-	$(MAKE) update
+	$(MAKE) update_
 
 update:
+	nix flake lock --update-input base
+	$(MAKE) update_
+
+update_:
 	@if [ "$(UNAME)" = "Darwin" ]; then \
 		$(MAKE) update-mac; \
 	else \
