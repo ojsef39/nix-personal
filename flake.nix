@@ -19,6 +19,10 @@
           {
             programs.zsh = {
               enable = true;
+
+              shellAliases = {
+                open = "open"; # Neovim quick alias
+              };
             };
           }
         ];
