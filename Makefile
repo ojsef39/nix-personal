@@ -12,7 +12,7 @@ help:
 	@echo "  make update         - Update system (auto-detects OS, only updates base)"
 	@echo "  make update-mac     - Update MacOS specifically"
 	@echo "  make update-linux   - Update Linux specifically"
-	@echo "  make lint           - Check flake configuration"
+	@echo "  make check          - Check/lint flake configuration"
 	@echo "  make clean          - Clean up old generations"
 
 install:
@@ -100,8 +100,15 @@ update-mac:
 update-linux:
 	sudo nixos-rebuild switch --flake .#linux
 
-lint:
-	nix run --extra-experimental-features 'nix-command flakes' nixpkgs#statix -- check .
+check:
+	nix flake lock --update-input base
+	nix flake check --no-update-lock-file
+	nix run --no-update-lock-file --extra-experimental-features 'nix-command flakes' nixpkgs#statix -- check .
+	@if [ "$(UNAME)" = "Darwin" ]; then \
+		darwin-rebuild switch --flake .#mac --dry-run;  \
+	else \
+		sudo nixos-rebuild switch --flake .#linux --dry-run;  \
+	fi
 
 clean:
 	nix-collect-garbage -d
