@@ -16,8 +16,8 @@
       "mac" = base.inputs.darwin.lib.darwinSystem {
         system = "aarch64-darwin";  # or "x86_64-darwin"
         modules = base.outputs.sharedModules ++ base.outputs.macModules ++ [
-          ({ vars, ... }: {
-            home-manager.users.${vars.user} = import ./hosts/shared/import.nix;
+          ({ vars, lib, ... }: {
+            home-manager.users.${vars.user} = lib.mkOverride 50 (import ./hosts/shared/import.nix);
           })
         ];
         specialArgs = { inherit vars; };

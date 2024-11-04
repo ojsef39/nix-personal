@@ -1,7 +1,6 @@
 { pkgs, lib, ... }:
 {
   programs.neovim = {
-    enable = false;
     viAlias = false;
     vimAlias = false;
 
