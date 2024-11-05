@@ -11,23 +11,24 @@
       user = "josefhofer";
       email = "me@jhofer.de";
     };
+    system.darwin.aarch = "aarch64-darwin";
   in {
     darwinConfigurations = {
       "mac" = base.inputs.darwin.lib.darwinSystem {
-        system = "aarch64-darwin";  # or "x86_64-darwin"
+        system = system.darwin.aarch;
         modules = base.outputs.sharedModules ++ base.outputs.macModules ++ [
           ({ vars, ... }: {
             home-manager.users.${vars.user} = import ./hosts/shared/import.nix;
           })
         ];
-        specialArgs = { inherit vars; };
+        specialArgs = { inherit vars system; };
       };
     };
 
     # Uncomment and adjust the following section if needed
     # nixosConfigurations = {
     #   "linux" = nixpkgs.lib.nixosSystem {
-    #     system = "x86_64-linux";
+    #     system = system.nixos.aarch;
     #     modules = [
     #       base.baseModules
     #       {
