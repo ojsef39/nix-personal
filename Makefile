@@ -1,36 +1,46 @@
-.PHONY: install install-mac install-linux update update-mac update-linux help clean lint message_installation_complete
+.PHONY: all deploy update lint clean repair install format
 
-SHELL := /bin/bash
-UNAME := $(shell uname)
+all: deploy
 
-help:
-	@echo "Available commands:"
-	@echo "  make install        - Install Nix and required components (auto-detects OS)"
-	@echo "  make install-mac    - Install Nix and Darwin components for MacOS"
-	@echo "  make install-linux  - Install Nix for Linux"
-	@echo "  make update-full    - Update system (auto-detects OS, RESETS LOCAL REPO)"
-	@echo "  make update         - Update system (auto-detects OS, only updates base)"
-	@echo "  make update-mac     - Update MacOS specifically"
-	@echo "  make update-linux   - Update Linux specifically"
-	@echo "  make check          - Check/lint flake configuration"
-	@echo "  make clean          - Clean up old generations"
-
-install:
-	@if [ "$(UNAME)" = "Darwin" ]; then \
-		$(MAKE) install-mac; \
+# Full system deployment
+deploy:
+	@if [ "$$(uname)" = "Darwin" ]; then \
+		$(MAKE) deploy-darwin; \
 	else \
-		$(MAKE) install-linux; \
+		$(MAKE) deploy-nixos; \
 	fi
 
-install-mac:
-	@if command -v nix > /dev/null 2>&1; then \
-		echo "Nix is already installed"; \
-	else \
-		echo "Installing Nix..." && \
-		curl -L https://nixos.org/nix/install | sh; \
+# Deploy only nix-darwin changes
+deploy-darwin:
+	darwin-rebuild switch --flake .#mac
+
+deploy-nixos:
+	sudo nixos-rebuild switch --flake .#nixos
+
+update-reset:
+	@git reset HEAD --hard
+	@git pull --rebase
+	nix flake update
+	$(MAKE) update
+
+# Update nix-darwin and show changelog
+update:
+	nix-channel --update
+	nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update
+	$(MAKE) deploy
+
+# Setup homebrew, nix, nix-darwin and home-manager
+install:
+	@if [ "$$(uname)" != "Darwin" ]; then \
+		echo "Install is only supported on MacOS"; \
+		exit 1; \
+	fi
+	# Install Nix
+	@if ! command -v nix >/dev/null 2>&1; then \
+		curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install; \
 		echo ""; \
-		echo "==> Part 1/2 complete!"; \
-		echo "==> Please restart your shell and run 'make install' again!"; \
+		echo "==> Nix installed successfully!"; \
+		echo "==> Please RESTART YOUR TERMINAL and run 'make install' again to continue the installation process."; \
 		echo ""; \
 		exit 0; \
 	fi
@@ -45,79 +55,42 @@ install-mac:
 	nix-channel --update
 	# Install home-manager
 	nix-shell '<home-manager>' -A install
-	@if command -v darwin-rebuild > /dev/null 2>&1; then \
-		echo "Nix-darwin is already installed"; \
-	else \
-		echo "Installing nix-darwin..." && \
-		nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer && \
-		./result/bin/darwin-installer; \
-	fi
-	@if [ -f ~/.config/nix/nix.conf ] && grep -q "experimental-features.*nix-command.*flakes" ~/.config/nix/nix.conf; then \
-		echo "Flakes already enabled"; \
-	else \
-		echo "Enabling flakes..." && \
-		mkdir -p ~/.config/nix && \
-		echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf; \
-	fi
-	$(MAKE) message_installation_complete
-
-install-linux:
-	@if command -v nix > /dev/null 2>&1; then \
-		echo "Nix is already installed"; \
-	else \
-		echo "Installing Nix..." && \
-		curl -L https://nixos.org/nix/install | sh -s -- --daemon; \
-	fi
-	@if [ -f ~/.config/nix/nix.conf ] && grep -q "experimental-features.*nix-command.*flakes" ~/.config/nix/nix.conf; then \
-		echo "Flakes already enabled"; \
-	else \
-		echo "Enabling flakes..." && \
-		mkdir -p ~/.config/nix && \
-		echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf; \
-	fi
-	$(MAKE) message_installation_complete
-
-update-full:
-	@git reset HEAD --hard
-	@git pull --rebase
-	nix flake update
-	$(MAKE) update_
-
-update:
-	nix flake lock --update-input base
-	$(MAKE) update_
-
-update_:
-	@if [ "$(UNAME)" = "Darwin" ]; then \
-		$(MAKE) update-mac; \
-	else \
-		$(MAKE) update-linux; \
-	fi
-
-update-mac:
-	darwin-rebuild switch --flake .#mac
-
-update-linux:
-	sudo nixos-rebuild switch --flake .#linux
-
-check:
-	nix flake lock --update-input base
-	nix flake check --no-update-lock-file
-	nix run --no-update-lock-file --extra-experimental-features 'nix-command flakes' nixpkgs#statix -- check .
-	@if [ "$(UNAME)" = "Darwin" ]; then \
-		darwin-rebuild switch --flake .#mac --dry-run;  \
-	else \
-		sudo nixos-rebuild switch --flake .#linux --dry-run;  \
-	fi
-
-clean:
-	nix-collect-garbage -d
-	@if command -v home-manager > /dev/null 2>&1; then \
-		home-manager generations; \
-	fi
-
-message_installation_complete:
+	# Initialize nix-darwin
+	$(MAKE) init-darwin
 	@echo ""
 	@echo "==> Installation complete!"
-	@echo "==> Please restart your shell and run 'make update' to install config"
+	@echo "==> Please restart your shell and run 'make deploy'"
 	@echo ""
+
+# Check flake configuration
+lint:
+	nix run --extra-experimental-features 'nix-command flakes' nixpkgs#statix -- check .
+
+# Dry run deployment
+check:
+	@if [ "$$(uname)" != "darwin" ]; then \
+		darwin-rebuild switch --check --flake .#mac; \
+		darwin-rebuild switch --dry-run --flake .#mac; \
+	fi
+
+# Clean up old generations and store
+clean:
+	sudo nix-collect-garbage -d
+
+repair:
+	sudo nix-store --verify --check-contents --repair
+
+format:
+	nix --extra-experimental-features nix-command --extra-experimental-features flakes fmt
+
+help:
+	@echo "Available commands:"
+	@echo "  make install        - Install Nix and required components (auto-detects OS)"
+	@echo "  make deploy         - Full system deployment (auto-detects OS)"
+	@echo "  make update         - Update nix-darwin and show changelog"
+	@echo "  make update-reset   - Update nix-darwin and reset local changes"
+	@echo "  make lint           - Check flake configuration"
+	@echo "  make clean          - Clean up old generations"
+	@echo "  make repair         - Repair nix store"
+	@echo "  make format         - Format flake configuration"
+
