@@ -42,11 +42,9 @@ install:
 		echo "==> Nix installed successfully!"; \
 		echo "==> Please RESTART YOUR TERMINAL and run 'make install' again to continue the installation process."; \
 		echo ""; \
-		exit 0; \
+		exit 1; \
 	fi
-	# Install Homebrew if not installed
-	@command -v brew >/dev/null 2>&1 || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	# Setup channels
+	# Setup Nix channels
 	nix-channel --remove darwin || true
 	nix-channel --remove home-manager || true
 	nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
@@ -55,20 +53,27 @@ install:
 	nix-channel --update
 	# Install home-manager
 	nix-shell '<home-manager>' -A install
-	# Initialize nix-darwin
-	$(MAKE) init-darwin
+	# Install nix-darwin
+	@if ! command -v darwin-rebuild > /dev/null 2>&1; then \
+		echo "Installing nix-darwin..." && \
+		nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer && \
+		./result/bin/darwin-installer; \
+	fi
+	# Install Homebrew if not installed
+	@command -v brew >/dev/null 2>&1 || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	@echo ""
+	@echo "==> YOU CAN IGNORE HOMEBREW INSTRUCTIONS ABOVE"
 	@echo ""
 	@echo "==> Installation complete!"
 	@echo "==> Please restart your shell and run 'make deploy'"
 	@echo ""
-
 # Check flake configuration
 lint:
 	nix run --extra-experimental-features 'nix-command flakes' nixpkgs#statix -- check .
 
 # Dry run deployment
 check:
-	@if [ "$$(uname)" != "darwin" ]; then \
+	@if [ "$$(uname)" == "Darwin" ]; then \
 		darwin-rebuild switch --check --flake .#mac; \
 		darwin-rebuild switch --dry-run --flake .#mac; \
 	fi
