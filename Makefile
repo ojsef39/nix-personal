@@ -75,7 +75,7 @@ lint:
 check:
 	@if [ "$$(uname)" == "Darwin" ]; then \
 		darwin-rebuild switch --check --flake .#mac; \
-		darwin-rebuild switch --dry-run --flake .#mac; \
+		nix build .#darwinConfigurations.mac.system --dry-run \
 	fi
 
 # Clean up old generations and store
