@@ -2,13 +2,14 @@
   description = "personal nix configuration";
 
   inputs = {
-    # base.url = "github:ojsef39/nix-base/dev";
-    base.url = "/Users/josefhofer/CodeProjects/github.com/ojsef39/nix-base/";
+    base.url = "github:ojsef39/nix-base/dev";
+    # base.url = "/Users/josefhofer/CodeProjects/github.com/ojsef39/nix-base/";
   };
 
   outputs = { self, base, ... }: let
     vars = {
       user = "josefhofer";
+      full_name = "Josef Hofer";
       email = "me@jhofer.de";
     };
     system.darwin.aarch = "aarch64-darwin";
@@ -20,6 +21,7 @@
           ({ vars, ... }: {
             home-manager.users.${vars.user} = import ./hosts/shared/import.nix;
           })
+          ./hosts/darwin/import.nix
         ];
         specialArgs = { inherit vars system; };
       };
