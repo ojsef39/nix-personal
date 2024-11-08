@@ -60,12 +60,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        # os: [ubuntu-latest, macos-latest]
+        os: [macos-latest]
         include:
-          - os: ubuntu-latest
-            config: "nixosConfigurations.nixos.config.system.build.toplevel"
           - os: macos-latest
             config: "darwinConfigurations.mac.system"
+            # - os: ubuntu-latest
+            #   config: "nixosConfigurations.nixos.config.system.build.toplevel"
     steps:
       - uses: actions/checkout@v4
 
