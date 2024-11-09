@@ -11,7 +11,6 @@
       user = "josefhofer";
       full_name = "Josef Hofer";
       email = "me@jhofer.de";
-      signing_key1 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAnnOOtnSeqQ3+XjO2jaC5k0pk5BIZVB4YI3KukF4o83";
     };
     system.darwin.aarch = "aarch64-darwin";
   in {
