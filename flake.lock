@@ -8,11 +8,11 @@
         "yuki": "yuki"
       },
       "locked": {
-        "lastModified": 1731190408,
-        "narHash": "sha256-fX5Xgf6X5ch8TzzKszbgVVIJU0+c2jr6qMLEDgUKE3w=",
+        "lastModified": 1731197716,
+        "narHash": "sha256-aMogQ9lqA8RgN9T1fFnVVVC6flqvegYwYfayE0Vchhc=",
         "owner": "ojsef39",
         "repo": "nix-base",
-        "rev": "b390ac778ade6bb533f1e838a42e002a6517c5f6",
+        "rev": "03db0d5107fe9ba9ec79f0f131ca8db497b60141",
         "type": "github"
       },
       "original": {

@@ -13,6 +13,13 @@
 
 {
   system = {
+    # activationScripts are executed every time you boot the system or run `nixos-rebuild` / `darwin-rebuild`.
+    activationScripts.postUserActivation.text = ''
+      # activateSettings -u will reload the settings from the database and apply them to the current session,
+      # so we do not need to logout and login again to make the changes take effect.
+      /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+    '';
+
     defaults = {
       dock = {
         # tilesize = 62; # Just so i know the before value
@@ -38,6 +45,14 @@
           "/Applications/Poe.app"
           "/System/Applications/iPhone Mirroring.app"
         ];
+      };
+      # Unlock the Dock so this and base config can edit it
+      CustomUserPreferences = {
+        "com.apple.dock" = {
+          "contents-immutable" = 0;
+          "size-immutable" = 0;
+          "position-immutable" = 0;
+        };
       };
     };
   };
