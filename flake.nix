@@ -11,6 +11,7 @@
       user = "josefhofer";
       full_name = "Josef Hofer";
       email = "me@jhofer.de";
+      is_vm = false;
     };
     system.darwin.aarch = "aarch64-darwin";
   in {
@@ -22,7 +23,7 @@
             home-manager.users.${vars.user} = import ./hosts/shared/import.nix;
           })
           ./hosts/darwin/import.nix
-          ./hosts/darwin/homebrew.nix
+          (import ./hosts/darwin/homebrew.nix { inherit vars; })
         ];
         specialArgs = { inherit vars system; };
       };
