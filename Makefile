@@ -80,13 +80,73 @@ check:
 
 # Clean up old generations and store
 clean:
-	sudo nix-collect-garbage -d
+	@read -p "Are you sure? [y/N] " ans; \
+	if [ "$$ans" = "y" ]; then \
+		sudo nix-collect-garbage -d; \
+	else \
+		echo "Clean cancelled."; \
+	fi
 
 repair:
 	sudo nix-store --verify --check-contents --repair
 
 format:
 	nix --extra-experimental-features nix-command --extra-experimental-features flakes fmt
+
+git-reset:
+	git reset HEAD --hard
+	git pull --rebase
+	clear
+
+uninstall:
+	@read -p "Are you sure? [y/N] " ans; \
+	if [ "$$ans" != "y" ]; then \
+		echo "Aborting."; \
+		exit 1; \
+	fi; \
+	if [ "$$(uname)" != "Darwin" ]; then \
+		echo "Uninstall is only supported on MacOS"; \
+		exit 1; \
+	fi; \
+	echo "Restoring original shell configuration files..."; \
+	sudo mv /etc/zshrc.backup-before-nix /etc/zshrc 2>/dev/null || true; \
+	sudo mv /etc/bashrc.backup-before-nix /etc/bashrc 2>/dev/null || true; \
+	sudo mv /etc/bash.bashrc.backup-before-nix /etc/bash.bashrc 2>/dev/null || true; \
+	echo "Stopping Nix-related services..."; \
+	sudo launchctl unload /Library/LaunchDaemons/org.nixos.nix-daemon.plist 2>/dev/null || true; \
+	sudo launchctl unload /Library/LaunchDaemons/org.nixos.darwin-store.plist 2>/dev/null || true; \
+	echo "Removing LaunchDaemons..."; \
+	sudo rm -f /Library/LaunchDaemons/org.nixos.nix-daemon.plist; \
+	sudo rm -f /Library/LaunchDaemons/org.nixos.darwin-store.plist; \
+	echo "Removing build users and group..."; \
+	sudo dscl . -delete /Groups/nixbld 2>/dev/null || true; \
+	for u in $$(sudo dscl . -list /Users | grep _nixbld); do \
+		sudo dscl . -delete /Users/$$u 2>/dev/null || true; \
+	done; \
+	echo "Cleaning up fstab entry..."; \
+	sudo sed -i '.bak' '/\/nix/d' /etc/fstab || true; \
+	echo "Removing synthetic.conf entry..."; \
+	if [ -f /etc/synthetic.conf ]; then \
+		sudo sed -i '.bak' '/^nix/d' /etc/synthetic.conf; \
+		if [ ! -s /etc/synthetic.conf ]; then \
+			sudo rm /etc/synthetic.conf; \
+		fi; \
+	fi; \
+	echo "Removing Nix files and directories..."; \
+	sudo rm -rf /etc/nix /var/root/.nix-profile /var/root/.nix-defexpr /var/root/.nix-channels; \
+	rm -rf ~/.nix-profile ~/.nix-defexpr ~/.nix-channels; \
+	echo "Unmounting and removing Nix store volume..."; \
+	if mount | grep -q '/nix'; then \
+		sudo diskutil unmount force /nix 2>/dev/null || true; \
+	fi; \
+	NIX_VOLUME=$$(diskutil list | grep "Nix Store" | awk '{print $$NF}'); \
+	if [ ! -z "$$NIX_VOLUME" ]; then \
+		sudo diskutil apfs deleteVolume $$NIX_VOLUME || true; \
+	fi; \
+	echo "Removing /nix directory..."; \
+	sudo rm -rf /nix; \
+	echo "==> Nix uninstallation complete."; \
+	echo "==> Note: You may need to restart your shell or terminal."
 
 help:
 	@echo "Available commands:"
