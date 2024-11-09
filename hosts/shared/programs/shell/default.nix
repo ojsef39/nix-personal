@@ -1,4 +1,5 @@
-{ pkgs, lib, vars, ... }:
+{ pkgs, lib, vars, ... }: {
+
   programs.zsh = {
     # Environment variables
     sessionVariables = {
@@ -20,4 +21,3 @@
     };
   };
 }
-
