@@ -7,10 +7,14 @@
   };
 
   outputs = { self, base, ... }: let
+    hostname = builtins.getEnv "HOSTNAME";
+    is_vm = builtins.match ".*(VM|vm|[Vv]irtual).*" hostname != null;
+    tracedIsVm = builtins.trace "Is VM: ${is_vm}" is_vm;
     vars = {
       user = "josefhofer";
       full_name = "Josef Hofer";
       email = "me@jhofer.de";
+      is_vm = tracedIsVm;
     };
     system.darwin.aarch = "aarch64-darwin";
   in {

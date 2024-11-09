@@ -5,7 +5,7 @@
     taps = [];
 
     # Mac App Store apps
-    masApps = {
+    masApps = if vars.is_vm then {} else {
       "CrystalFetch" = 6454431289;
       "Parcel" = 639968404;
       "Keynote" = 409183694;
