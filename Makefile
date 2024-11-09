@@ -73,8 +73,8 @@ lint:
 
 # Dry run deployment
 check:
+	nix flake check
 	@if [ "$$(uname)" == "Darwin" ]; then \
-		darwin-rebuild switch --check --flake .#mac; \
 		nix build .#darwinConfigurations.mac.system --dry-run; \
 	fi
 
