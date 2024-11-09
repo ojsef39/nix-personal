@@ -62,14 +62,25 @@ jobs:
       matrix:
         # os: [ubuntu-latest, macos-latest]
         os: [macos-latest]
+        include:
+          - os: macos-latest
+            config: "darwinConfigurations.mac.system"
+            # - os: ubuntu-latest
+            #   config: "nixosConfigurations.nixos.config.system.build.toplevel"
     steps:
       - uses: actions/checkout@v4
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v9
 
-      - name: Install Nix Dependencies
-        run: make install
+      - name: Enable Nix Flakes
+        run: |
+          mkdir -p ~/.config/nix
+          echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 
-      - name: Check Flake Inputs and Dryrun the Configuration
-        run: make check
+      - name: Check Flake Inputs
+        run: nix flake check
+
+      - name: Build Configuration
+        run: |
+          nix build .#${{ matrix.config }} --dry-run
