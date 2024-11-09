@@ -23,7 +23,7 @@
             home-manager.users.${vars.user} = import ./hosts/shared/import.nix;
           })
           ./hosts/darwin/import.nix
-          (import ./hosts/darwin/homebrew.nix { inherit vars; })
+          (import ./hosts/darwin/homebrew.nix)
         ];
         specialArgs = { inherit vars system; };
       };

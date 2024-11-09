@@ -1,11 +1,11 @@
-{ vars, ... }:
+{ vars, lib, ... }:
 {
   # Homebrew for macOS-specific and unavailable packages
   homebrew = {
     taps = [];
 
     # Mac App Store apps
-    masApps = if vars.is_vm then {} else {
+    masApps = lib.mkIf (!vars.is_vm) {
       "CrystalFetch" = 6454431289;
       "Parcel" = 639968404;
       "Keynote" = 409183694;
