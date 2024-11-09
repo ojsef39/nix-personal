@@ -21,9 +21,28 @@
     '';
     defaults = {
       dock = {
+        # tilesize = 62; # Just so i know the before value
+        # largesize = 64; # Just so i know the before value
         persistent-apps = [
           "/Applications/Arc.app"
+          "/Applications/Mail.app"
+          "/Applications/Calendar.app"
+          "/Applications/WhatsApp.app"
+          "/Applications/Messages.app"
+          "${pkgs.obsidian}/Applications/Discord.app"
+          "${pkgs.obsidian}/Applications/Obsidian.app"
+          "/Applications/Goodnotes.app"
+          "/Applications/Reeder.app"
+          "/Applications/Linear.app"
           "/Applications/kitty.app"
+          "/Applications/Lens.app"
+          "${pkgs.obsidian}/Applications/UTM.app"
+          "/Applications/Shadow PC Beta.app"
+          "/Applications/Music.app"
+          "/Applications/System Settings.app"
+          "/Applications/Yubico Authenticator.app"
+          "/Applications/Poe.app"
+          "/System/Applications/iPhone Mirroring.app"
         ];
       };
     };
