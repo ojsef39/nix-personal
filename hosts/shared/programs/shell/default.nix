@@ -7,10 +7,6 @@
     '';
 
     # Aliases
-    shellAliases = {
-      please = "sudo";
-      ls = "eza --icons --git --header";
-      x = "exit";
-    };
+    shellAliases = {};
   };
 }
