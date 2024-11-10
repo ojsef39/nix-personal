@@ -25,8 +25,7 @@ update-reset:
 
 # Update nix-darwin and show changelog
 update:
-	nix-channel --update
-	nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update
+	$(MAKE) check
 	$(MAKE) deploy
 
 # Setup homebrew, nix, nix-darwin and home-manager
@@ -68,12 +67,9 @@ install:
 	@echo "==> Please restart your shell and run 'make deploy'"
 	@echo ""
 
-run-build:
-	@if [ "$$(uname)" == "Darwin" ]; then \
-		./result/sw/bin/darwin-rebuild switch --flake .#maco
-	fi
-
 build:
+	nix-channel --update
+	nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update
 	@if [ "$$(uname)" == "Darwin" ]; then \
 		nix build --extra-experimental-features 'nix-command flakes' .#darwinConfigurations.mac.system; \
 	fi
@@ -84,6 +80,8 @@ lint:
 
 # Dry run deployment
 check:
+	nix-channel --update
+	nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update
 	nix flake check
 	@if [ "$$(uname)" == "Darwin" ]; then \
 		nix build .#darwinConfigurations.mac.system --dry-run; \
@@ -125,7 +123,6 @@ help:
 	@echo "  make install        - Install Nix and required components (auto-detects OS)"
 	@echo "  make deploy         - Full system deployment (auto-detects OS)"
 	@echo "  make build					 - Build the system configuration (does not run it)"
-	@echo "  make run-build      - run the built system configuration (does not build it)"
 	@echo "  make update         - Update nix-darwin and show changelog"
 	@echo "  make update-reset   - Update nix-darwin and reset local changes"
 	@echo "  make lint           - Check flake configuration"
