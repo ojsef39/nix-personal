@@ -8,11 +8,11 @@
         "yuki": "yuki"
       },
       "locked": {
-        "lastModified": 1731211147,
-        "narHash": "sha256-5RxsE+sE8HOlWnUC0yJo9rUokISI+1tacqvezq+T9dY=",
+        "lastModified": 1731211584,
+        "narHash": "sha256-Zl58bPwnqNgTn0wVM56HURqEfxKbSeiOppLBxiXvMs8=",
         "owner": "ojsef39",
         "repo": "nix-base",
-        "rev": "6569fa04ed2b2411aa32afe4100f5a184bbe77e1",
+        "rev": "84cf1044a39bb17294a1a987332844b474903783",
         "type": "github"
       },
       "original": {
@@ -79,11 +79,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1730837930,
-        "narHash": "sha256-0kZL4m+bKBJUBQse0HanewWO0g8hDdCvBhudzxgehqc=",
+        "lastModified": 1731235328,
+        "narHash": "sha256-NjavpgE9/bMe/ABvZpyHIUeYF1mqR5lhaep3wB79ucs=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "2f607e07f3ac7e53541120536708e824acccfaa8",
+        "rev": "60bb110917844d354f3c18e05450606a435d2d10",
         "type": "github"
       },
       "original": {

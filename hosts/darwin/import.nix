@@ -2,7 +2,7 @@
 {
   imports =
     [
-        # ./apps.nix
+        ./apps.nix
         ./system.nix
         # ./host-users.nix
     ];
