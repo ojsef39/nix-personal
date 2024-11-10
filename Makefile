@@ -67,6 +67,17 @@ install:
 	@echo "==> Installation complete!"
 	@echo "==> Please restart your shell and run 'make deploy'"
 	@echo ""
+
+run-build:
+	@if [ "$$(uname)" == "Darwin" ]; then \
+		./result/sw/bin/darwin-rebuild switch --flake .#maco
+	fi
+
+build:
+	@if [ "$$(uname)" == "Darwin" ]; then \
+		nix build --extra-experimental-features 'nix-command flakes' .#darwinConfigurations.mac.system; \
+	fi
+
 # Check flake configuration
 lint:
 	nix run --extra-experimental-features 'nix-command flakes' nixpkgs#statix -- check .
@@ -113,6 +124,8 @@ help:
 	@echo "Available commands:"
 	@echo "  make install        - Install Nix and required components (auto-detects OS)"
 	@echo "  make deploy         - Full system deployment (auto-detects OS)"
+	@echo "  make build					 - Build the system configuration (does not run it)"
+	@echo "  make run-build      - run the built system configuration (does not build it)"
 	@echo "  make update         - Update nix-darwin and show changelog"
 	@echo "  make update-reset   - Update nix-darwin and reset local changes"
 	@echo "  make lint           - Check flake configuration"
