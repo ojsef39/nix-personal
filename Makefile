@@ -1,6 +1,6 @@
 .PHONY: all deploy update lint clean repair install format
 
-all: deploy
+all: check
 
 # Full system deployment
 deploy:
