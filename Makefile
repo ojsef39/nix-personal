@@ -104,7 +104,8 @@ uninstall:
 		echo "Aborting."; \
 		exit 1; \
 	fi; \
-	. /nix/nix-installer uninstall
+	darwin-uninstaller
+	/nix/nix-installer uninstall
 	echo "==> Nix uninstallation complete."; \
 	echo "==> Note: You may need to restart your shell or terminal."
 
