@@ -7,11 +7,11 @@
       # GHQ configurations
       "ghq \"https://github.com/\"" = {
         vcs = "git";
-        root = "~/Code/";
+        root = "${vars.git.ghq}";
       };
       "ghq \"https://gitlab.com/\"" = {
         vcs = "git";
-        root = "~/Code/";
+        root = "${vars.git.ghq}";
       };
     };
   };

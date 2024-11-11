@@ -11,6 +11,8 @@
       user = "josefhofer";
       full_name = "Josef Hofer";
       email = "me@jhofer.de";
+      git.ghq = "~/CodeProjects";
+      kitty.project_selector = "${vars.git.ghq}/github.com/ojsef39 ${vars.git.ghq}/gitlab.com/ojsef39 ~/.config";
       is_vm = false;
     };
     system.darwin.aarch = "aarch64-darwin";
