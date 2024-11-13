@@ -11,8 +11,8 @@
       user = "josefhofer";
       full_name = "Josef Hofer";
       email = "me@jhofer.de";
-      git.ghq = "~/CodeProjects";
-      git.nix = "${vars.git.ghq}/github.com/ojsef39/nix-personal";
+      git.ghq = "CodeProjects";
+      git.nix = "~/${vars.git.ghq}/github.com/ojsef39/nix-personal";
       kitty.project_selector = "~/.config";
       is_vm = false;
     };
