@@ -9,11 +9,11 @@
         "yuki": "yuki"
       },
       "locked": {
-        "lastModified": 1731431906,
-        "narHash": "sha256-1//Zp5AJTd9sNQrdsUI9JF0j2FMdqGFr8h9hEkGSXrg=",
+        "lastModified": 1731494644,
+        "narHash": "sha256-0N13f8oiZL+c9BGrjzV7C7LuqLASmyB8BieokMNLZpo=",
         "owner": "ojsef39",
         "repo": "nix-base",
-        "rev": "6f2cb2fc7f1dd390e90bc59b83f94a8484c09db3",
+        "rev": "4d00bcfe43402b1f8506b88feea64d2bf1444df3",
         "type": "github"
       },
       "original": {
@@ -109,11 +109,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1731424394,
-        "narHash": "sha256-J+POQgWQdjhuF1pEnkVKWPJ+dM62FTepk6TmJdj3O5U=",
+        "lastModified": 1731454423,
+        "narHash": "sha256-TtwvgFxUa0wyptLhQbKaixgNW1UXf3+TDqfX3Kp63oM=",
         "owner": "lnl7",
         "repo": "nix-darwin",
-        "rev": "e30d226a24e4079d068321f935dbf30626f08dc8",
+        "rev": "6c71c49e2448e51ad830ed211024e6d0edc50116",
         "type": "github"
       },
       "original": {
