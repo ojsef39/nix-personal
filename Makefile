@@ -92,6 +92,7 @@ clean:
 	@read -p "Are you sure? [y/N] " ans; \
 	if [ "$$ans" = "y" ]; then \
 		sudo nix-collect-garbage -d; \
+		nix-collect-garbage -d; \
 	else \
 		echo "Clean cancelled."; \
 	fi
