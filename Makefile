@@ -123,7 +123,7 @@ help:
 	@echo "Available commands:"
 	@echo "  make install        - Install Nix and required components (auto-detects OS)"
 	@echo "  make deploy         - Full system deployment (auto-detects OS)"
-	@echo "  make build					 - Build the system configuration (does not run it)"
+	@echo "  make build          - Build the system configuration (does not run it)"
 	@echo "  make update         - Update nix-darwin and show changelog"
 	@echo "  make update-reset   - Update nix-darwin and reset local changes"
 	@echo "  make lint           - Check flake configuration"
