@@ -26,7 +26,12 @@ update-reset:
 # Update nix-darwin and show changelog
 update:
 	$(MAKE) check
-	$(MAKE) deploy
+	@read -t 30 -p "Looks good? (Y/n) - DEFAULT IS 'Y' AFTER 30 SECONDS!: " response; \
+	if [ -z "$$response" ] || [ "$$response" = "Y" ] || [ "$$response" = "y" ]; then \
+		$(MAKE) deploy; \
+	else \
+		echo "Update aborted."; \
+	fi
 
 # Setup homebrew, nix, nix-darwin and home-manager
 install:
