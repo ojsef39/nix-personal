@@ -12,5 +12,5 @@
   ],
   "dependencyDashboard": true,
   "reviewers": ["@ojsef39"],
-  "schedule": ["every 6 hours"]
+  "schedule": ["0 */6 * * *"]
 }
