@@ -10,11 +10,11 @@
         "yuki": "yuki"
       },
       "locked": {
-        "lastModified": 1732106325,
-        "narHash": "sha256-y7isjDMob0YfCUYozI1jvZtIwYCH/JFoSzSU81g0h34=",
+        "lastModified": 1732216018,
+        "narHash": "sha256-LKw6UEPnznvcjK+rHlUhSHBUG+qJYgXclDHEGWJZ2KA=",
         "owner": "ojsef39",
         "repo": "nix-base",
-        "rev": "2c2847fb4c79efad5828a840f4083a26a070ab24",
+        "rev": "f84b8e1664c55c136b31ff744866ad2f4e90cd90",
         "type": "github"
       },
       "original": {
@@ -315,11 +315,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1731676054,
-        "narHash": "sha256-OZiZ3m8SCMfh3B6bfGC/Bm4x3qc1m2SVEAlkV6iY7Yg=",
+        "lastModified": 1732014248,
+        "narHash": "sha256-y/MEyuJ5oBWrWAic/14LaIr/u5E0wRVzyYsouYY3W6w=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "5e4fbfb6b3de1aa2872b76d49fafc942626e2add",
+        "rev": "23e89b7da85c3640bbc2173fe04f4bd114342367",
         "type": "github"
       },
       "original": {
@@ -512,15 +512,16 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1730833815,
-        "narHash": "sha256-gHYFtvoo07Y93mk/N1OhAu4N5Or3LDFt4s2tSy7J53c=",
+        "lastModified": 1731779150,
+        "narHash": "sha256-gP3LKUko68oEu67uGCqgx2s7yRhTsm0vW2lS1zVGhRg=",
         "owner": "frostplexx",
         "repo": "yuki",
-        "rev": "ff772fc98217d136480d899dd2c055b4269d6263",
+        "rev": "c9358055cecef122fc6787d4bdfbd886a3cb043f",
         "type": "github"
       },
       "original": {
         "owner": "frostplexx",
+        "ref": "dev",
         "repo": "yuki",
         "type": "github"
       }
