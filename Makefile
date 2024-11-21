@@ -1,6 +1,6 @@
 .PHONY: all deploy update lint clean repair install format
 
-all: deploy
+all: check
 
 # Full system deployment
 deploy:
@@ -25,9 +25,13 @@ update-reset:
 
 # Update nix-darwin and show changelog
 update:
-	nix-channel --update
-	nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update
-	$(MAKE) deploy
+	$(MAKE) check
+	@read -t 30 -p "Looks good? (Y/n) - DEFAULT IS 'Y' AFTER 30 SECONDS!: " response; \
+	if [ -z "$$response" ] || [ "$$response" = "Y" ] || [ "$$response" = "y" ]; then \
+		$(MAKE) deploy; \
+	else \
+		echo "Update aborted."; \
+	fi
 
 # Setup homebrew, nix, nix-darwin and home-manager
 install:
@@ -67,12 +71,22 @@ install:
 	@echo "==> Installation complete!"
 	@echo "==> Please restart your shell and run 'make deploy'"
 	@echo ""
+
+build:
+	nix-channel --update
+	nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update
+	@if [ "$$(uname)" == "Darwin" ]; then \
+		nix build --extra-experimental-features 'nix-command flakes' .#darwinConfigurations.mac.system; \
+	fi
+
 # Check flake configuration
 lint:
 	nix run --extra-experimental-features 'nix-command flakes' nixpkgs#statix -- check .
 
 # Dry run deployment
 check:
+	nix-channel --update
+	nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update
 	nix flake check
 	@if [ "$$(uname)" == "Darwin" ]; then \
 		nix build .#darwinConfigurations.mac.system --dry-run; \
@@ -83,12 +97,14 @@ clean:
 	@read -p "Are you sure? [y/N] " ans; \
 	if [ "$$ans" = "y" ]; then \
 		sudo nix-collect-garbage -d; \
+		nix-collect-garbage -d; \
 	else \
 		echo "Clean cancelled."; \
 	fi
 
 repair:
 	sudo nix-store --verify --check-contents --repair
+	nix-store --verify --check-contents --repair
 
 format:
 	nix --extra-experimental-features nix-command --extra-experimental-features flakes fmt
@@ -113,6 +129,7 @@ help:
 	@echo "Available commands:"
 	@echo "  make install        - Install Nix and required components (auto-detects OS)"
 	@echo "  make deploy         - Full system deployment (auto-detects OS)"
+	@echo "  make build          - Build the system configuration (does not run it)"
 	@echo "  make update         - Update nix-darwin and show changelog"
 	@echo "  make update-reset   - Update nix-darwin and reset local changes"
 	@echo "  make lint           - Check flake configuration"
