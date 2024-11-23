@@ -103,7 +103,6 @@ clean:
 
 repair:
 	sudo nix-store --verify --check-contents --repair
-	nix-store --verify --check-contents --repair
 
 format:
 	nix --extra-experimental-features nix-command --extra-experimental-features flakes fmt
