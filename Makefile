@@ -60,8 +60,7 @@ install:
 	# Install nix-darwin
 	@if ! command -v darwin-rebuild > /dev/null 2>&1; then \
 		echo "Installing nix-darwin..." && \
-		nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer && \
-		./result/bin/darwin-installer; \
+		nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A darwin-rebuild; \
 	fi
 	# Install Homebrew if not installed
 	@command -v brew >/dev/null 2>&1 || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
