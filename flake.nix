@@ -4,6 +4,9 @@
   inputs = {
     base.url = "github:ojsef39/nix-base/dev";
     # base.url = "/Users/josefhofer/CodeProjects/github.com/ojsef39/nix-base/";
+    nixpkgs.follows = "base/nixpkgs";
+    darwin.follows = "base/darwin";
+    home-manager.follows = "base/home-manager";
   };
 
   outputs = { self, base, ... }: let

@@ -10,11 +10,11 @@
         "yuki": "yuki"
       },
       "locked": {
-        "lastModified": 1732368407,
-        "narHash": "sha256-m8SkOviF0liNbEY60SLx5lx+dahx1kBgwns78jsCOX0=",
+        "lastModified": 1732382163,
+        "narHash": "sha256-UuFHU4ykoc54dTCh+QX3RvWgdCbcmkZGHGTH2gGNZgc=",
         "owner": "ojsef39",
         "repo": "nix-base",
-        "rev": "3c827d88fcb4ed9f2c7cc0097facf7da8fd7c0cc",
+        "rev": "66c0aaff2a96add5b7d8152e9bc16123ba4c9f65",
         "type": "github"
       },
       "original": {
@@ -238,11 +238,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1732303962,
-        "narHash": "sha256-5Umjb5AdtxV5jSJd5jxoCckh5mlg+FBQDsyAilu637g=",
+        "lastModified": 1732383377,
+        "narHash": "sha256-FnTC1Eycct/oD1I0ZUuy9FmQFfBeuymbVD2ptlQWaGc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "8cf9cb2ee78aa129e5b8220135a511a2be254c0c",
+        "rev": "16fe78182e924c9a2b0cffa1f343efea80945ef2",
         "type": "github"
       },
       "original": {
@@ -284,16 +284,15 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1732335492,
+        "lastModified": 1732381660,
         "narHash": "sha256-hzV4WCmFsU6Z5Me/lwrPAhjvE81IR4DkdFmk8uX9B00=",
-        "owner": "Soikr",
+        "owner": "kaylorben",
         "repo": "nixcord",
-        "rev": "c892ad525872742b57bd3effde5b112618de8387",
+        "rev": "79eb5a668a0344ee161eeb3dc979d6721d9be1a7",
         "type": "github"
       },
       "original": {
-        "owner": "Soikr",
-        "ref": "patch-1",
+        "owner": "kaylorben",
         "repo": "nixcord",
         "type": "github"
       }
@@ -332,7 +331,19 @@
     },
     "root": {
       "inputs": {
-        "base": "base"
+        "base": "base",
+        "darwin": [
+          "base",
+          "darwin"
+        ],
+        "home-manager": [
+          "base",
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "base",
+          "nixpkgs"
+        ]
       }
     },
     "rust-overlay": {

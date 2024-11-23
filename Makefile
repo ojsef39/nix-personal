@@ -57,18 +57,18 @@ install:
 	nix-channel --update
 	# Install home-manager
 	nix-shell '<home-manager>' -A install
-	# Install nix-darwin
-	@if ! command -v darwin-rebuild > /dev/null 2>&1; then \
-		echo "Installing nix-darwin..." && \
-		nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A darwin-rebuild; \
-	fi
 	# Install Homebrew if not installed
 	@command -v brew >/dev/null 2>&1 || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	# Install nix-darwin and nix config
+	@if ! command -v darwin-rebuild > /dev/null 2>&1; then \
+		nix build .#darwinConfigurations.mac.system --extra-experimental-features "nix-command flakes" && \
+		./result/sw/bin/darwin-rebuild switch --flake .#mac; \
+	fi
 	@echo ""
 	@echo "==> YOU CAN IGNORE HOMEBREW INSTRUCTIONS ABOVE"
 	@echo ""
 	@echo "==> Installation complete!"
-	@echo "==> Please restart your shell and run 'make deploy'"
+	@echo "==> Please restart your shell"
 	@echo ""
 
 build:
