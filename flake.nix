@@ -2,7 +2,7 @@
   description = "personal nix configuration";
 
   inputs = {
-    base.url = "github:ojsef39/nix-base/dev";
+    base.url = "github:ojsef39/nix-base";
     # base.url = "/Users/josefhofer/CodeProjects/github.com/ojsef39/nix-base/";
     nixpkgs.follows = "base/nixpkgs";
     darwin.follows = "base/darwin";
