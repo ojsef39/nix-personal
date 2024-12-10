@@ -37,6 +37,7 @@
       "imageoptim"
       "parsec"
       "shortcat"
+      "wireshark"
     ];
   };
 }
