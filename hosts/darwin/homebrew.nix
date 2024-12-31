@@ -35,6 +35,7 @@
       "brooklyn"
       "dockdoor"
       "imageoptim"
+      "moonlight"
       "parsec"
       "shortcat"
       "wireshark"
