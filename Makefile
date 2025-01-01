@@ -60,7 +60,7 @@ deploy: ## Deploy system configuration
 check: ## Check configuration
 	@echo "${INFO}Checking configuration..."
 	@nix flake check
-	@echo "${INFO}Dry-run configuration..."
+	@echo "${INFO}Dry-running configuration... (This can take a while)"
 	@DRYRUN_OUTPUT=$$(if [ "$$(uname)" = "Darwin" ]; then \
 		nix build .#darwinConfigurations.mac.system --dry-run 2>&1; \
 	else \
