@@ -64,9 +64,7 @@ jobs:
         os: [macos-latest]
         include:
           - os: macos-latest
-            config: "darwinConfigurations.mac.system"
             # - os: ubuntu-latest
-            #   config: "nixosConfigurations.nixos.config.system.build.toplevel"
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
@@ -78,9 +76,7 @@ jobs:
           mkdir -p ~/.config/nix
           echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 
-      - name: Check Flake Inputs
-        run: nix flake check
-
-      - name: Build Configuration
+      - name: Update Flakes and Check Configuration
         run: |
-          nix build .#${{ matrix.config }} --dry-run
+          echo n | make update || true
+          make check
