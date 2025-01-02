@@ -26,8 +26,9 @@
 
     # Homebrew formulae (CLI tools)
     brews = [
-      # "docx2pdf" ##TODO: Needs tap
       "iperf3"
+      "talosctl"
+      # "docx2pdf" ##TODO: Needs tap
     ];
 
     # macOS-specific apps and those not available/stable in nixpkgs
@@ -37,7 +38,6 @@
       "imageoptim"
       "moonlight"
       "parsec"
-      "shortcat"
       "wireshark"
     ];
   };
