@@ -13,9 +13,6 @@ talos_context() {
   # Write the file content to /tmp/talosconfig
   echo "$file_content" > /tmp/talosconfig
 
-  # Export the talosconfig
-  export TALOSCONFIG=/tmp/talosconfig
-
   # Run talosctl kubeconfig with the selected entry
   selected_title=$(echo "$items" | grep "$selected_item" | awk '{print $2}')
   talosctl kubeconfig --force ~/.kube/"$selected_title"
