@@ -12,6 +12,8 @@
         done
       fi
 
+      # Export the talosconfig
+      export TALOSCONFIG=/tmp/talosconfig
     '';
 
     # Aliases
