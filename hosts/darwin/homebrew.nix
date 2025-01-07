@@ -26,6 +26,7 @@
 
     # Homebrew formulae (CLI tools)
     brews = [
+      "git-secret"
       "iperf3"
       "talosctl"
       # "docx2pdf" ##TODO: Needs tap
