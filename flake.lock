@@ -10,17 +10,17 @@
         "yuki": "yuki"
       },
       "locked": {
-        "lastModified": 1735826636,
-        "narHash": "sha256-xVMC080IdbAh0zSwAcjJF2+EE5mMTLwkjDUH4lkZhCA=",
-        "owner": "ojsef39",
-        "repo": "nix-base",
-        "rev": "a5bf8224bcc038e644d90b3b6f17118d5528ec12",
-        "type": "github"
+        "lastModified": 1736187793,
+        "narHash": "sha256-IjntMAvRFBg+s6zajcPkROF4PAQWXqES49bG0XQkCNo=",
+        "ref": "refs/heads/feat/podman_debian",
+        "rev": "d9808e5a8d7eb4f78b61f9eb5ee87911fd0018f7",
+        "revCount": 36,
+        "type": "git",
+        "url": "file:///Users/josefhofer/CodeProjects/github.com/ojsef39/nix-base"
       },
       "original": {
-        "owner": "ojsef39",
-        "repo": "nix-base",
-        "type": "github"
+        "type": "git",
+        "url": "file:///Users/josefhofer/CodeProjects/github.com/ojsef39/nix-base"
       }
     },
     "base16": {
