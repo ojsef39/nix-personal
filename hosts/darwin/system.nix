@@ -23,7 +23,7 @@
           "/System/Applications/Calendar.app"
           "/Applications/WhatsApp.app"
           "/System/Applications/Messages.app"
-          "/Users/${vars.user}/Applications/Home Manager Apps/Discord.app"
+          "${pkgs.vesktop}/Applications/Vesktop.app"
           "${pkgs.obsidian}/Applications/Obsidian.app"
           "/Applications/Things3.app"
           "/Applications/Linear.app"
