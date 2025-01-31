@@ -30,8 +30,8 @@ update: ## Update flakes (and deploy, if you want)
 	@nix $(NIX_FLAGS) flake update
 	@echo "${SUCCESS}Updates complete"
 	@echo "Would you like to deploy now? Y/n/c(leanup after) - Auto-continues in 30s: "; \
-	read -t 30 -n 1 response || response="Y"; echo; \
-	if [ "$$response" != "Y" ] && [ "$$response" != "y" ] && [ "$$response" != "c" ]; then \
+	read -t 30 -n 1 -p "" response || response="Y"; echo; \
+	if [ -n "$$response" ] && [ "$$response" != "Y" ] && [ "$$response" != "y" ] && [ "$$response" != "c" ]; then \
 		echo "${INFO}Deployment skipped"; \
 		exit 1; \
 	fi; \
@@ -88,8 +88,9 @@ lint: ## Run linters
 
 clean: ## Clean up old generations
 	@echo "${INFO}Cleaning up old generations..."
-	@sudo nix-collect-garbage -d
-	@nix-collect-garbage -d
+	@sudo nix-collect-garbage --delete-older-than 2w --keep-going
+	@nix-collect-garbage --delete-older-than 2w --keep-going
+	@echo "${INFO}Optimizing store.."
 	@nix-store --gc
 	@nix-store --optimise
 	@echo "${SUCCESS}Cleanup complete"
