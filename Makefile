@@ -88,8 +88,8 @@ lint: ## Run linters
 
 clean: ## Clean up old generations
 	@echo "${INFO}Cleaning up old generations..."
-	@sudo nix-collect-garbage --delete-older-than 2w --keep-going
-	@nix-collect-garbage --delete-older-than 2w --keep-going
+	@sudo nix-collect-garbage --delete-older-than 14d --keep-going
+	@nix-collect-garbage --delete-older-than 14d --keep-going
 	@echo "${INFO}Optimizing store.."
 	@nix-store --gc
 	@nix-store --optimise
