@@ -6,6 +6,7 @@
     "enabled": true,
     "schedule": ["at any time"]
   },
-  "reviewers": ["ojsef39"],
-  "schedule": ["at any time"]
+  "schedule": ["at any time"],
+  "automerge": true,
+  "automergeType": "pr"
 }
