@@ -15,7 +15,12 @@
       # Export the talosconfig
       export TALOSCONFIG=/tmp/talosconfig
 
-      export PATH=$PATH:/Users/${vars.user}/${vars.git.ghq}/github.com/ojsef39/renovate-dependency-summary-no-config
+      renovate_summary() {
+        pipx install tabulate
+        source ~/.local/pipx/venvs/tabulate/bin/activate
+        python3 /Users/${vars.user}/${vars.git.ghq}/github.com/ojsef39/renovate-dependency-summary-no-config/renovate-summary.py
+        deactivate
+      }
     '';
 
     # Aliases

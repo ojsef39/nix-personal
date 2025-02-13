@@ -27,6 +27,7 @@ select:
 
 update: ## Update flakes (and deploy, if you want)
 	@echo "${INFO}Updating flakes..."
+	@git pull | true
 	@nix $(NIX_FLAGS) flake update
 	@echo "${SUCCESS}Updates complete"
 	@echo "Would you like to deploy now? Y/n/c(leanup after) - Auto-continues in 30s: "; \
