@@ -27,6 +27,7 @@ select:
 
 update: ## Update flakes (and deploy, if you want)
 	@echo "${INFO}Updating flakes..."
+	@git pull | true
 	@nix $(NIX_FLAGS) flake update
 	@echo "${SUCCESS}Updates complete"
 	@echo "Would you like to deploy now? Y/n/c(leanup after) - Auto-continues in 30s: "; \
@@ -46,14 +47,14 @@ deploy: ## Deploy system configuration
 	@$(MAKE) -s check || (echo "${ERROR}Checks failed" && exit 1)
 	@echo "${INFO}Deploying configuration..."
 	@if [ "$$(uname)" = "Darwin" ]; then \
-		if darwin-rebuild switch --flake .#mac; then \
+		if darwin-rebuild switch --keep-going --flake .#mac; then \
 			echo "${SUCCESS}Configuration deployed successfully"; \
 		else \
 			echo "${ERROR}Configuration deployment failed"; \
 			exit 1; \
 		fi \
 	else \
-		if sudo nixos-rebuild switch --flake .#nixos; then \
+		if sudo nixos-rebuild switch --keep-going --flake .#nixos; then \
 			echo "${SUCCESS}Configuration deployed successfully"; \
 		else \
 			echo "${ERROR}Configuration deployment failed"; \
