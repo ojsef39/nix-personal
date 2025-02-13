@@ -1,5 +1,7 @@
 { pkgs, lib, vars, ... }: 
 {
   # Keep this here even if empty for yuki compatibility
-  environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [
+    python313Packages.tabulate
+  ];
 }

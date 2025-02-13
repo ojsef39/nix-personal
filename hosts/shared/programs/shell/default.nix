@@ -14,6 +14,8 @@
 
       # Export the talosconfig
       export TALOSCONFIG=/tmp/talosconfig
+
+      export PATH=$PATH:/Users/${vars.user}/${vars.git.ghq}/github.com/ojsef39/renovate-dependency-summary-no-config
     '';
 
     # Aliases
