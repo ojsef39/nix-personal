@@ -34,7 +34,7 @@
           "/System//Applications/Music.app"
           "/System//Applications/System Settings.app"
           "/Applications/Yubico Authenticator.app"
-          "/Applications/Poe.app"
+          "/Applications/Claude.app"
           "/System/Applications/iPhone Mirroring.app"
         ];
       };
