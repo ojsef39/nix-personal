@@ -7,6 +7,7 @@
     nixpkgs.follows = "base/nixpkgs";
     darwin.follows = "base/darwin";
     home-manager.follows = "base/home-manager";
+    nixcord.follows = "base/nixcord";
   };
 
   outputs = { self, base, ... }: let
