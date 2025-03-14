@@ -26,6 +26,7 @@
 
     # Homebrew formulae (CLI tools)
     brews = [
+      "fluxcd/tap/flux"
       "git-secret"
       "iperf3"
       "talosctl"
