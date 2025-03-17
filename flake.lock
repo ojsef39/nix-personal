@@ -419,6 +419,10 @@
           "base",
           "home-manager"
         ],
+        "nixcord": [
+          "base",
+          "nixcord"
+        ],
         "nixpkgs": [
           "base",
           "nixpkgs"
