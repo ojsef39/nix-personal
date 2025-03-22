@@ -9,17 +9,17 @@
         "stylix": "stylix"
       },
       "locked": {
-        "lastModified": 1742652079,
-        "narHash": "sha256-KDeaeuetiab67NlvLUdA3xAHqyowuTeuiY+2cbaIYhg=",
-        "ref": "refs/heads/feat/k9s",
-        "rev": "209e7bd42bda34f45d1fb05b215ad2249240bb1e",
-        "revCount": 62,
-        "type": "git",
-        "url": "file:///Users/josefhofer/CodeProjects/github.com/ojsef39/nix-base"
+        "lastModified": 1741736985,
+        "narHash": "sha256-Nbk6eS4SCOym46eSbuOnhtHKI+5I1X5Ux70Upf9z2pI=",
+        "owner": "ojsef39",
+        "repo": "nix-base",
+        "rev": "b923fa9a0f8b7acf68f8b2b63beefd2c228d81a7",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///Users/josefhofer/CodeProjects/github.com/ojsef39/nix-base"
+        "owner": "ojsef39",
+        "repo": "nix-base",
+        "type": "github"
       }
     },
     "base16": {
