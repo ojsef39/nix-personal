@@ -38,14 +38,6 @@
           "/System/Applications/iPhone Mirroring.app"
         ];
       };
-      # Unlock the Dock so this and base config can edit it
-      CustomUserPreferences = {
-        "com.apple.dock" = {
-          "contents-immutable" = 0;
-          "size-immutable" = 0;
-          "position-immutable" = 0;
-        };
-      };
     };
   };
 }

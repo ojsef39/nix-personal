@@ -73,7 +73,4 @@ talos_context() {
   # Generate kubeconfig
   talosctl kubeconfig --force ~/.kube/config
   cp ~/.kube/config ~/.kube/"$selected_title"
-
-  # Launch the dashboard
-  talos_dashboard
 }
