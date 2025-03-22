@@ -9,11 +9,11 @@
         "stylix": "stylix"
       },
       "locked": {
-        "lastModified": 1741736985,
-        "narHash": "sha256-Nbk6eS4SCOym46eSbuOnhtHKI+5I1X5Ux70Upf9z2pI=",
+        "lastModified": 1742655154,
+        "narHash": "sha256-7ceX4GZRZT/1fS9pXPt/GWVVj4EBuX3C0tqcTZD3tnM=",
         "owner": "ojsef39",
         "repo": "nix-base",
-        "rev": "b923fa9a0f8b7acf68f8b2b63beefd2c228d81a7",
+        "rev": "39ee65ae52f59d09828fcb131187e15e6a97b4b6",
         "type": "github"
       },
       "original": {
