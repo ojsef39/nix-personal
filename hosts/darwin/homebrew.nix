@@ -26,6 +26,7 @@
 
     # Homebrew formulae (CLI tools)
     brews = [
+      "Graphviz"
       "expect"
       "fluxcd/tap/flux"
       "git-secret"
