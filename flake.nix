@@ -22,7 +22,6 @@
       };
       kitty.project_selector = "~/.config";
       is_vm = false;
-      disable_mas = true;
     };
     system.darwin.aarch = "aarch64-darwin";
   in {
