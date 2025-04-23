@@ -18,7 +18,7 @@
       git = {
         ghq = "CodeProjects";
         url = "";
-        nix = "~/${vars.git.ghq}/github.com/ojsef39/nix-personal";
+        nix = "$HOME/${vars.git.ghq}/github.com/ojsef39/nix-personal";
       };
       kitty.project_selector = "~/.config";
       is_vm = false;
