@@ -5,7 +5,7 @@
     taps = [];
 
     # Mac App Store apps
-    masApps = lib.mkIf (!(vars.is_vm)) {
+    masApps = lib.mkIf (!vars.is_vm) {
       "CrystalFetch" = 6454431289;
       "Parcel" = 639968404;
       "Keynote" = 409183694;
