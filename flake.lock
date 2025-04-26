@@ -11,11 +11,11 @@
         "stylix": "stylix"
       },
       "locked": {
-        "lastModified": 1745699200,
-        "narHash": "sha256-yz/Si3D1ykUjRDCKArPSg1dHcdweWy7MnkbbH1Ky6sQ=",
+        "lastModified": 1745700474,
+        "narHash": "sha256-7/JR9aVE/KZbwH/5Dbmq++eI/Py3ME2ZonFsHqYjaRI=",
         "owner": "ojsef39",
         "repo": "nix-base",
-        "rev": "f62ad3f875d6afdcb4a9c2d2fbfa13482da01ed9",
+        "rev": "b062094a3e0461ed7c4643dd139e8c07da5db4fa",
         "type": "github"
       },
       "original": {
@@ -338,11 +338,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1745696459,
-        "narHash": "sha256-U4GAGdm7fmLB8fm1q9nSvk/GrgLD9S0Le0jEH562chY=",
+        "lastModified": 1745701677,
+        "narHash": "sha256-ajEl9nV4XFW7H98XCPUshzYL+K0+gVqEWUC4+MBAUFw=",
         "owner": "viperml",
         "repo": "nh",
-        "rev": "990e60cf21144b5e1db35aa4ddfd12cf2838b497",
+        "rev": "7c913894581c21a8669384a366dc486c136ea7d5",
         "type": "github"
       },
       "original": {
