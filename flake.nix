@@ -10,7 +10,7 @@
     nixcord.follows = "base/nixcord";
   };
 
-  outputs = { self, base, ... }: let
+  outputs = { base, ... }: let
     vars = {
       user = "josefhofer";
       full_name = "Josef Hofer";
