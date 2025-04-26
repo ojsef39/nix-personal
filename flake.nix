@@ -18,6 +18,12 @@
       git = {
         ghq = "CodeProjects";
         url = "";
+        lazy = {
+          # authorColors = ''
+          #   "renovate[bot]": "#f4dbd6" # Rosewater
+          #   "dependabot[bot]": "#f4dbd6" # Rosewater
+          # '';
+          };
         nix = "$HOME/${vars.git.ghq}/github.com/ojsef39/nix-personal";
       };
       kitty.project_selector = "~/.config";
