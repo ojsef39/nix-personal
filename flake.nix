@@ -2,8 +2,8 @@
   description = "personal nix configuration";
 
   inputs = {
-    base.url = "github:ojsef39/nix-base";
-    # base.url = "/Users/josefhofer/CodeProjects/github.com/ojsef39/nix-base/";
+    # base.url = "github:ojsef39/nix-base";
+    base.url = "/Users/josefhofer/CodeProjects/github.com/ojsef39/nix-base/";
     nixpkgs.follows = "base/nixpkgs";
     darwin.follows = "base/darwin";
     home-manager.follows = "base/home-manager";
@@ -19,11 +19,11 @@
         ghq = "CodeProjects";
         url = "";
         lazy = {
-          # authorColors = ''
-          #   "renovate[bot]": "#f4dbd6" # Rosewater
-          #   "dependabot[bot]": "#f4dbd6" # Rosewater
-          # '';
-          };
+          # authorColors = {
+          #   "test[bot]" = "#f4dbd6"; # Rosewater
+          #   "dependabot[bot]" = "#f4dbd6"; # Rosewater
+          # };
+        };
         nix = "$HOME/${vars.git.ghq}/github.com/ojsef39/nix-personal";
       };
       kitty.project_selector = "~/.config";

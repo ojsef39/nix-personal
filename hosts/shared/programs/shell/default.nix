@@ -1,29 +1,37 @@
-{ pkgs, lib, vars, ... }: {
+{ vars, ... }: {
 
-  programs.zsh = {
-    initContent = ''
-      # Source MEGA completion
-      # source /Applications/MEGAcmd.app/Contents/MacOS/megacmd_completion.sh
-
-      # Source additional scripts
-      if [ -d $HOME/.zsh_scripts ]; then
-        for file in $HOME/.zsh_scripts_local/*.zsh; do
-          source $file
-        done
-      fi
-
+  programs.fish = {
+    interactiveShellInit = ''
       # Export the talosconfig
-      export TALOSCONFIG=/tmp/talosconfig
+      set -gx TALOSCONFIG /tmp/talosconfig
 
-      renovate_summary() {
-        pipx install tabulate
-        source ~/.local/pipx/venvs/tabulate/bin/activate
-        python3 /Users/${vars.user}/${vars.git.ghq}/github.com/ojsef39/renovate-dependency-summary-no-config/renovate-summary.py
-        deactivate
-      }
+      # Source additional scripts if they exist
+      if test -d $HOME/.fish_scripts_local
+        for file in $HOME/.fish_scripts_local/*.fish
+          source $file
+        end
+      end
     '';
 
-    # Aliases
+    # Add the renovate_summary function
+    functions = {
+      renovate_summary = ''
+        # Install tabulate if needed
+        pipx install tabulate
+        set -l venv_path ~/.local/pipx/venvs/tabulate
+        # Set PYTHONPATH to use the site-packages from the virtual environment
+        set -l old_pythonpath $PYTHONPATH
+        set -gx PYTHONPATH $venv_path/lib/python*/site-packages $PYTHONPATH
+        # Add the venv bin path to PATH
+        set -l old_path $PATH
+        set -gx PATH $venv_path/bin $PATH
+        python3 /Users/${vars.user}/${vars.git.ghq}/github.com/ojsef39/renovate-dependency-summary-no-config/renovate-summary.py
+        # Restore original paths
+        set -gx PYTHONPATH $old_pythonpath
+        set -gx PATH $old_path
+      '';
+    };
+
     shellAliases = {
       talos = "talosctl";
     };
@@ -31,9 +39,9 @@
 
   home = {
     file = {
-      ".zsh_scripts_local/" = {
+      ".fish_scripts_local/" = {
         recursive = true;
-        source = ./zsh_scripts;
+        source = ./fish_scripts;
       };
     };
   };
