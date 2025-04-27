@@ -2,24 +2,24 @@
 function talos_dashboard
     # Get all cluster members
     echo "🔍 Fetching cluster members..."
-    set members_output (talosctl get members -o yaml)
 
     # Parse member hostnames
     set -l control_hostnames
     set -l worker_hostnames
     set -l nodes_args
 
-    for line in (echo $members_output | grep "hostname:" | awk '{print $2}')
-        set hostname (string trim $line)
-        if test -n "$hostname"
+    # Process the output line by line
+    for line in (talosctl get members -o yaml | grep "hostname:" | awk '{print $2}')
+        set node_hostname (string trim $line)
+        if test -n "$node_hostname"
             # Check if it's a control plane node
-            if string match -q "*control*" "$hostname"
-                set -a control_hostnames $hostname
+            if string match -q "*control*" "$node_hostname"
+                set -a control_hostnames $node_hostname
             else
-                set -a worker_hostnames $hostname
+                set -a worker_hostnames $node_hostname
             end
             # Add to nodes_args array
-            set -a nodes_args -n $hostname
+            set -a nodes_args -n $node_hostname
         end
     end
 
@@ -31,13 +31,13 @@ function talos_dashboard
         echo "🚀 Starting dashboard with nodes:"
 
         # Display control plane nodes first with special marker
-        for hostname in $control_hostnames
-            echo "* 🎮 $hostname"
+        for node_hostname in $control_hostnames
+            echo "* 🎮 $node_hostname"
         end
 
         # Display worker nodes
-        for hostname in $worker_hostnames
-            echo "* 🖥️ $hostname"
+        for node_hostname in $worker_hostnames
+            echo "* 🖥️ $node_hostname"
         end
 
         # Run the dashboard with proper array expansion
@@ -53,8 +53,14 @@ function talos_context
     # Fetch all items from the vault "JHC" in the category "API Credential" with names containing "talos"
     set items (op item list --vault "JHC" --categories "API Credential" --format json | jq -r '.[] | select(.title | contains("talos")) | .id + " " + .title')
 
+    # Process items into a format that fzf can display line by line
+    set formatted_items
+    for item in $items
+        set -a formatted_items "$item"
+    end
+
     # Use fzf to select an item
-    set selected_item (echo "$items" | fzf --delimiter " " --with-nth 2.. | awk '{print $1}')
+    set selected_item (printf "%s\n" $formatted_items | fzf --delimiter " " --with-nth 2.. | awk '{print $1}')
 
     # If no item was selected, exit the function
     if test -z "$selected_item"
@@ -63,16 +69,19 @@ function talos_context
     end
 
     # Extract the title from the selected item
-    set selected_title (echo "$items" | grep "$selected_item" | awk '{$1=""; print substr($0,2)}')
+    set selected_title (printf "%s\n" $formatted_items | grep "$selected_item" | awk '{$1=""; print substr($0,2)}')
 
-    # Fetch the credential field content from the selected item
-    set file_content (op item get "$selected_item" --vault "JHC" --format json | jq -r '.fields[] | select(.label == "text") | .value')
+    op item get "$selected_item" --vault JHC --format json | jq -r '.fields[] | select(.label == "text") | .value' >/tmp/talosconfig
 
-    # Write the file content to /tmp/talosconfig
-    echo "$file_content" >/tmp/talosconfig
+    # Set environment variable
     set -gx TALOSCONFIG /tmp/talosconfig
 
     # Generate kubeconfig
+    mkdir -p ~/.kube
     talosctl kubeconfig --force ~/.kube/config
-    cp ~/.kube/config ~/.kube/"$selected_title"
+
+    # Copy the config file with the selected title
+    if test -n "$selected_title" -a -f ~/.kube/config
+        cp ~/.kube/config ~/.kube/"$selected_title"
+    end
 end
