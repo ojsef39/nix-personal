@@ -10,11 +10,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1745783863,
-        "narHash": "sha256-KkSvybv5H/n/64e2G8jt1EBgg+yrwcE8iHrwF4fzlaY=",
+        "lastModified": 1745834374,
+        "narHash": "sha256-I4NYEV9mtcUbKf/9Jg+2YBGJ2rBPfhJT6vNx2nrjwSE=",
         "owner": "ojsef39",
         "repo": "nix-base",
-        "rev": "9cc61506450c7390ef1ad11b008af51f14601be8",
+        "rev": "6573531421733d9ebda7d0dcfb62c3f00bb070f3",
         "type": "github"
       },
       "original": {
