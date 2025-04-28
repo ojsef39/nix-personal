@@ -10,17 +10,16 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1745840023,
-        "narHash": "sha256-CKoHLrzOUv6G8qpMRzJ1Vt7IJ3z5QiD8Eim3epvqt4U=",
+        "lastModified": 1745858394,
+        "narHash": "sha256-mtbuo/isCx2Y8NvvTvfhRFNv3o0YxrRrX8mAdQ367Ao=",
         "owner": "ojsef39",
         "repo": "nix-base",
-        "rev": "92fbc7f8fb65dbc3214fa9b69dffaf12802e926e",
+        "rev": "6a9ad23c113a74307b6f402b11b2161f98f32212",
         "type": "github"
       },
       "original": {
-        "owner": "ojsef39",
-        "repo": "nix-base",
-        "type": "github"
+        "path": "/Users/josefhofer/CodeProjects/github.com/ojsef39/nix-base/",
+        "type": "path"
       }
     },
     "darwin": {
@@ -67,11 +66,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1745810134,
-        "narHash": "sha256-WfnYH/i7DFzn4SESQfWviXiNUZjohZhzODqLwKYHIPI=",
+        "lastModified": 1745853192,
+        "narHash": "sha256-ardehuT9qtSXtY1XdOY6fEM3Kf3bQa3LZxxKdAScCnU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "be7cf1709b469a2a2c62169172a167d1fed3509f",
+        "rev": "c54a8ab0d2ea7486eadb14f1dc498817ff164f59",
         "type": "github"
       },
       "original": {
