@@ -12,9 +12,12 @@
 
   outputs = { base, ... }: let
     vars = {
-      user = "josefhofer";
-      full_name = "Josef Hofer";
-      email = "me@jhofer.de";
+      user = {
+          name = "josefhofer";
+          full_name = "Josef Hofer";
+          email = "me@jhofer.de";
+          uid= 501;
+        };
       git = {
         ghq = "CodeProjects";
         url = "";
@@ -36,7 +39,7 @@
         system = system.darwin.aarch;
         modules = base.outputs.sharedModules ++ base.outputs.macModules ++ [
           ({ vars, ... }: {
-            home-manager.users.${vars.user} = import ./hosts/shared/import.nix;
+            home-manager.users.${vars.user.name} = import ./hosts/shared/import.nix;
           })
           ./hosts/darwin/import.nix
           (import ./hosts/darwin/homebrew.nix)

@@ -25,7 +25,7 @@
         # Add the venv bin path to PATH
         set -l old_path $PATH
         set -gx PATH $venv_path/bin $PATH
-        python3 /Users/${vars.user}/${vars.git.ghq}/github.com/ojsef39/renovate-dependency-summary-no-config/renovate-summary.py
+        python3 /Users/${vars.user.name}/${vars.git.ghq}/github.com/ojsef39/renovate-dependency-summary-no-config/renovate-summary.py
         # Restore original paths
         set -gx PYTHONPATH $old_pythonpath
         set -gx PATH $old_path
