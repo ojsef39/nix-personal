@@ -28,7 +28,6 @@
           "/Applications/Things3.app"
           "/Applications/Linear.app"
           "/Applications/kitty.app"
-          "/Applications/Lens.app"
           "${pkgs.utm}/Applications/UTM.app"
           "/Applications/Shadow PC Beta.app"
           "/System//Applications/Music.app"
