@@ -42,10 +42,15 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
 
+      - name: Install Just
+        uses: extractions/setup-just@v2
+        with:
+          just-version: "1.40.0"
+
       - name: Run statix linter
         run: |
           echo "Linting Flake..."
-          if make lint; then
+          if just lint; then
             echo "success=true" >> $GITHUB_ENV
           else
             echo "Lint failed, listing flake.lock for debugging:"
@@ -64,6 +69,8 @@ jobs:
         os: [macos-latest]
         include:
           - os: macos-latest
+            nix_cmd: "darwin"
+            nix_host: "mac"
             # - os: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
@@ -71,12 +78,16 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@21a544727d0c62386e78b4befe52d19ad12692e3 # v17
 
+      - name: Install Just
+        uses: extractions/setup-just@v2
+        with:
+          just-version: "1.40.0"
+
       - name: Enable Nix Flakes
         run: |
           mkdir -p ~/.config/nix
           echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 
-      - name: Update Flakes and Check Configuration
+      - name: Check Configuration
         run: |
-          echo n | make update || true
-          make check
+          nix run nixpkgs#nh -- ${{ matrix.nix_cmd }} build --no-nom -u -H ${{ matrix.nix_host }} .
