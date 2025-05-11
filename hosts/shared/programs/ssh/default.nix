@@ -1,4 +1,4 @@
-{ lib, vars, ... }: {
+_: {
   programs.ssh = {
     matchBlocks = {
       # JHC K8s
