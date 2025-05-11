@@ -22,6 +22,7 @@ deploy: lint
 [doc('Upgrade flake inputs and deploy')]
 upgrade: update-refs lint
     # Deploying system configuration with update...
+    @git pull || true
     @git add .
     @nix run nixpkgs#nh -- {{nix_cmd}} switch -u -a -H {{nix_host}} $NIX_GIT_PATH
     @git add .
