@@ -43,7 +43,7 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@main
 
       - name: Install Just
-        uses: extractions/setup-just@v2
+        uses: extractions/setup-just@v3
         with:
           just-version: "1.40.0"
 
@@ -79,7 +79,7 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@21a544727d0c62386e78b4befe52d19ad12692e3 # v17
 
       - name: Install Just
-        uses: extractions/setup-just@v2
+        uses: extractions/setup-just@v3
         with:
           just-version: "1.40.0"
 
