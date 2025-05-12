@@ -28,9 +28,9 @@ upgrade: update-refs lint
     @git add .
     @if git log -1 --pretty=%B | grep -q "chore(deps): updated inputs and refs"; then \
         echo "Amending previous dependency update commit..."; \
-        git commit --amend --no-edit; \
+        git commit --amend --no-edit || true; \
     else \
-        git commit -m "chore(deps): updated inputs and refs"; \
+        git commit -m "chore(deps): updated inputs and refs" || true; \
     fi
 
 
