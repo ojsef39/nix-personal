@@ -16,7 +16,14 @@ default:
 deploy: lint
     # Deploying system configuration without update...
     @git add .
-    @nix run nixpkgs#nh -- {{nix_cmd}} switch -U base -a -H {{nix_host}} $NIX_GIT_PATH
+    @nix run nixpkgs#nh -- {{nix_cmd}} switch -a -H {{nix_host}} $NIX_GIT_PATH
+
+[group('nix')]
+[doc('Deploy system configuration')]
+deploy-update: lint
+    # Deploying system configuration with update...
+    @git add .
+    @nix run nixpkgs#nh -- {{nix_cmd}} switch -u -a -H {{nix_host}} $NIX_GIT_PATH
 
 [group('nix')]
 [doc('Upgrade flake inputs and deploy')]
@@ -30,7 +37,7 @@ upgrade: update-refs lint
         echo "Amending previous dependency update commit..."; \
         git commit --amend --no-edit || true; \
     else \
-        git commit -m "chore(deps): updated inputs and refs" || true; \
+        git commit -m "chore(deps): updated inputs and/or refs" || true; \
     fi
 
 

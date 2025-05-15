@@ -103,17 +103,14 @@
     },
     "nixkit": {
       "locked": {
-        "lastModified": 1746690725,
-        "narHash": "sha256-CX0ssH04253OTTdbmmMigJXnFplDm5IrE3k9U+qSnb4=",
-        "owner": "frostplexx",
-        "repo": "nixkit",
-        "rev": "59c956380b35043e22d97279540b269ba69b0807",
-        "type": "github"
+        "lastModified": 1747154022,
+        "narHash": "sha256-/t7I3ithsYwIWXv8FGg5mm/MlXzIgzslg577uRrPVJg=",
+        "path": "/Users/josefhofer/CodeProjects/github.com/frostplexx/nixkit",
+        "type": "path"
       },
       "original": {
-        "owner": "frostplexx",
-        "repo": "nixkit",
-        "type": "github"
+        "path": "/Users/josefhofer/CodeProjects/github.com/frostplexx/nixkit",
+        "type": "path"
       }
     },
     "nixpkgs": {
