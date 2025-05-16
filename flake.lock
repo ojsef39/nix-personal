@@ -10,14 +10,17 @@
         "nixpkgs_fork": "nixpkgs_fork"
       },
       "locked": {
-        "lastModified": 1747336155,
-        "narHash": "sha256-RNEFbzLUlxazF/RTdxQCvMvddvut9+yPS3RaZuKWw70=",
-        "path": "/Users/josefhofer/CodeProjects/github.com/ojsef39/nix-base/",
-        "type": "path"
+        "lastModified": 1747412278,
+        "narHash": "sha256-st7PPHSFNnyKNBJrOJAJqvO4Ys+crfQKc6RwyF/hYDc=",
+        "owner": "ojsef39",
+        "repo": "nix-base",
+        "rev": "063ed9804c72ce9486afe266efec5682154a2fa6",
+        "type": "github"
       },
       "original": {
-        "path": "/Users/josefhofer/CodeProjects/github.com/ojsef39/nix-base/",
-        "type": "path"
+        "owner": "ojsef39",
+        "repo": "nix-base",
+        "type": "github"
       }
     },
     "darwin": {
@@ -28,11 +31,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1747297701,
-        "narHash": "sha256-R8mFJL3lREsJNDqPHbsn03imKoH2ocpzgT2kKWsWYBM=",
+        "lastModified": 1747365160,
+        "narHash": "sha256-4ZVr0x+ry6ybym/VhVYACj0HlJo44YxAaPGOxiS88Hg=",
         "owner": "lnl7",
         "repo": "nix-darwin",
-        "rev": "b6fff20c692d684d250a39453ed1853dd44c96ab",
+        "rev": "8817b00b0011750381d0d44bb94d61087349b6ba",
         "type": "github"
       },
       "original": {
@@ -64,11 +67,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1747334031,
-        "narHash": "sha256-AoicyrJCTsPAio47Vbwy+gJjUeDZtB+WMbzxZRwc7k0=",
+        "lastModified": 1747374689,
+        "narHash": "sha256-JT/aBZqmK1LbExzwT9cPkvxKc0IC4i6tZKOPjsSWFbI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "dbc90cc3ae9c8f927200a6ceaf4aa247ea6bc443",
+        "rev": "d2263ce5f4c251c0f7608330e8fdb7d1f01f0667",
         "type": "github"
       },
       "original": {
@@ -88,11 +91,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1747333767,
-        "narHash": "sha256-CpURQcZLN9y0dFzOVOMCo9SWNK+VSzA0HgbJ2MS+izI=",
+        "lastModified": 1747377065,
+        "narHash": "sha256-W+ETNRxqNKZtZRlwLClt/8qBoQKNVHs0dQO40yQrpeg=",
         "owner": "kaylorben",
         "repo": "nixcord",
-        "rev": "fb2bdb7e925ed831eaee3c2eeddbf322dd3546b4",
+        "rev": "8b809c190e9b6a6339c62fb5c65c19730ce10ef3",
         "type": "github"
       },
       "original": {
@@ -103,14 +106,17 @@
     },
     "nixkit": {
       "locked": {
-        "lastModified": 1747154022,
-        "narHash": "sha256-/t7I3ithsYwIWXv8FGg5mm/MlXzIgzslg577uRrPVJg=",
-        "path": "/Users/josefhofer/CodeProjects/github.com/frostplexx/nixkit",
-        "type": "path"
+        "lastModified": 1746690725,
+        "narHash": "sha256-CX0ssH04253OTTdbmmMigJXnFplDm5IrE3k9U+qSnb4=",
+        "owner": "frostplexx",
+        "repo": "nixkit",
+        "rev": "59c956380b35043e22d97279540b269ba69b0807",
+        "type": "github"
       },
       "original": {
-        "path": "/Users/josefhofer/CodeProjects/github.com/frostplexx/nixkit",
-        "type": "path"
+        "owner": "frostplexx",
+        "repo": "nixkit",
+        "type": "github"
       }
     },
     "nixpkgs": {
