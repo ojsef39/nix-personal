@@ -6,6 +6,7 @@ alias u := upgrade
 # macOS need nh darwin switch and NixOS needs nh os switch
 nix_cmd := `if [ "$(uname)" = "Darwin" ]; then echo "darwin"; else echo "os"; fi`
 nix_host := `if [ "$(uname)" = "Darwin" ]; then echo "mac"; else echo "nixos"; fi`
+NIX_CONFIG := "access-tokens = github.com=$(op read op://Personal/GITHUB_TOKEN/no_access)"
 
 [doc('HELP')]
 default:
@@ -16,22 +17,20 @@ default:
 deploy: lint
     # Deploying system configuration without update...
     @git add .
-    @nix run nixpkgs#nh -- {{nix_cmd}} switch -a -H {{nix_host}} $NIX_GIT_PATH
+    @NIX_CONFIG="{{NIX_CONFIG}}" nix run nixpkgs#nh -- {{nix_cmd}} switch -a -H {{nix_host}} $NIX_GIT_PATH
 
 [group('nix')]
 [doc('Deploy system configuration')]
 deploy-update: lint
     # Deploying system configuration with update...
     @git add .
-    @nix run nixpkgs#nh -- {{nix_cmd}} switch -u -a -H {{nix_host}} $NIX_GIT_PATH
+    @NIX_CONFIG="{{NIX_CONFIG}}" nix run nixpkgs#nh -- {{nix_cmd}} switch -u -a -H {{nix_host}} $NIX_GIT_PATH
 
 [group('nix')]
 [doc('Upgrade flake inputs and deploy')]
 upgrade: update-refs lint
-    # Deploying system configuration with update...
-    @git pull || true
     @git add .
-    @nix run nixpkgs#nh -- {{nix_cmd}} switch -u -a -H {{nix_host}} $NIX_GIT_PATH
+    @NIX_CONFIG="{{NIX_CONFIG}}" nix run nixpkgs#nh -- {{nix_cmd}} switch -u -a -H {{nix_host}} $NIX_GIT_PATH
     @git add .
     @if git log -1 --pretty=%B | grep -q "chore(deps): updated inputs and refs"; then \
         echo "Amending previous dependency update commit..."; \
