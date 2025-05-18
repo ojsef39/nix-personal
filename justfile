@@ -24,12 +24,14 @@ deploy: lint
 [doc('Deploy system configuration')]
 deploy-update: lint
     # Deploying system configuration with update...
+    @git pull || true
     @git add .
     @NIX_CONFIG="{{NIX_CONFIG}}" nix run nixpkgs#nh -- {{nix_cmd}} switch -u -a -H {{nix_host}} $NIX_GIT_PATH
 
 [group('nix')]
 [doc('Upgrade flake inputs and deploy')]
 upgrade: update-refs lint
+    @git pull || true
     @git add .
     @NIX_CONFIG="{{NIX_CONFIG}}" nix run nixpkgs#nh -- {{nix_cmd}} switch -u -a -H {{nix_host}} $NIX_GIT_PATH
     @git add .
