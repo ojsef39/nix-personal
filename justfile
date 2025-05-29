@@ -49,7 +49,7 @@ update-refs:
     # Update current repository
     @kitten @ launch --type=overlay --title="update-nix-fetchgit-all" --copy-env --env SKIP_FF=1 fish -C "cd $NIX_GIT_PATH && update-nix-fetchgit-all && exit 0"
     # Find and update nix-base
-    @kitten @ launch --type=overlay --title="update-nix-fetchgit-all (base)" --copy-env --env SKIP_FF=1 fish -C 'set CODE_DIR $NIX_GIT_PATH; while not string match -q "*Code*" (basename $CODE_DIR); set CODE_DIR (dirname $CODE_DIR); end; set NIX_BASE_PATH (find $CODE_DIR -type d -path "*/github.com/*" -name "nix-base" | head -n 1); if test -n "$NIX_BASE_PATH"; echo "Updating nix-base at $NIX_BASE_PATH"; cd $NIX_BASE_PATH && update-nix-fetchgit-all; else; echo "nix-base repository not found"; end && exit 0'
+    @kitten @ launch --type=overlay --title="update-nix-fetchgit-all (base)" --copy-env --env SKIP_FF=1 fish -C 'set base_path (_find_nix_base); if test $status -eq 0; echo "Updating nix-base at $base_path"; cd $base_path && update-nix-fetchgit-all; end && exit 0'
 
 [group('maintain')]
 [doc('Clean and optimise the nix store with nh')]
