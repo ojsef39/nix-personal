@@ -88,15 +88,44 @@ end
 
 # Function to upgrade all Talos nodes one by one
 function talos_upgrade
+    set -l k8s_mode false
+    set -l upgrade_args
+
+    # Check for --k8s flag
+    for arg in $argv
+        if test "$arg" = --k8s
+            set k8s_mode true
+        else
+            set -a upgrade_args $arg
+        end
+    end
+
+    # Special case: if k8s mode is specified with no args, that's valid
     # Check if arguments are provided
-    if test (count $argv) -eq 0
+    if test (count $upgrade_args) -eq 0; and not $k8s_mode
         echo "❌ Usage: talos_upgrade <talosctl-upgrade-args>"
         echo "   Example: talos_upgrade -i factory.talos.dev/installer/abc123:v1.10.3"
         echo "   Example: talos_upgrade -i factory.talos.dev/installer/abc123:v1.10.3 --preserve"
+        echo ""
+        echo "   For Kubernetes upgrades, use --k8s flag:"
+        echo "   Example: talos_upgrade --k8s"
+        echo "   Example: talos_upgrade --k8s --to 1.29.0"
+        echo "   Example: talos_upgrade --k8s --from 1.28.0 --to 1.29.0"
         return 1
     end
 
-    echo "🔄 Starting Talos upgrade with args: $argv"
+    # Set command and message based on mode
+    set -l upgrade_cmd upgrade
+    if $k8s_mode
+        if test (count $upgrade_args) -eq 0
+            echo "🔄 Starting Kubernetes upgrade to latest version"
+        else
+            echo "🔄 Starting Kubernetes upgrade with args: $upgrade_args"
+        end
+        set upgrade_cmd upgrade-k8s
+    else
+        echo "🔄 Starting Talos OS upgrade with args: $upgrade_args"
+    end
 
     # Get all cluster members
     echo "🔍 Fetching cluster members..."
@@ -128,18 +157,34 @@ function talos_upgrade
         echo "  🎮 $node_hostname"
     end
 
-    for node_hostname in $worker_hostnames
-        echo "  🛠️ $node_hostname"
+    if not $k8s_mode
+        for node_hostname in $worker_hostnames
+            echo "  🛠️ $node_hostname"
+        end
     end
 
     echo ""
 
-    # Upgrade control plane nodes first
-    if test (count $control_hostnames) -gt 0
+    # Upgrade k8s: Run on one control plane node only (it will update all nodes)
+    if $k8s_mode; and test (count $control_hostnames) -gt 0
+        echo "🎮 Upgrading Kubernetes (using first control plane)..."
+
+        # Only run on first control plane node
+        set first_node $control_hostnames[1]
+        echo "🔄 Running Kubernetes upgrade via $first_node"
+
+        talosctl $upgrade_cmd $upgrade_args -n $first_node
+
+        if test $status -ne 0
+            echo "❌ Failed to upgrade Kubernetes"
+            return 1
+        end
+        # Talos upgrade: Upgrade control plane nodes first
+    else if test (count $control_hostnames) -gt 0
         echo "🎮 Upgrading control planes..."
         for node_hostname in $control_hostnames
             # Run the upgrade command with user-provided args and current node
-            talosctl upgrade $argv -n $node_hostname
+            talosctl $upgrade_cmd $upgrade_args -n $node_hostname
 
             if test $status -ne 0
                 echo "❌ Failed to upgrade: $node_hostname"
@@ -162,12 +207,12 @@ function talos_upgrade
         end
     end
 
-    # Upgrade worker nodes
-    if test (count $worker_hostnames) -gt 0
+    # Upgrade worker nodes (only for OS upgrades, not for k8s upgrades)
+    if not $k8s_mode; and test (count $worker_hostnames) -gt 0
         echo "🛠️ Upgrading workers..."
         for node_hostname in $worker_hostnames
             # Run the upgrade command with user-provided args and current node
-            talosctl upgrade $argv -n $node_hostname
+            talosctl $upgrade_cmd $upgrade_args -n $node_hostname
 
             if test $status -ne 0
                 echo "❌ Failed to upgrade: $node_hostname"
@@ -183,6 +228,10 @@ function talos_upgrade
     end
 
     echo ""
-    echo "🎉 All nodes have been upgraded!"
+    if $k8s_mode
+        echo "🎉 Kubernetes has been upgraded on all nodes!"
+    else
+        echo "🎉 All nodes have been upgraded!"
+    end
     return 0
 end
