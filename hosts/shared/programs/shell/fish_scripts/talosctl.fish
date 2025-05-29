@@ -32,12 +32,12 @@ function talos_dashboard
 
         # Display control plane nodes first with special marker
         for node_hostname in $control_hostnames
-            echo "* 🎮 $node_hostname"
+            echo "  🎮 $node_hostname"
         end
 
         # Display worker nodes
         for node_hostname in $worker_hostnames
-            echo "* 🖥️ $node_hostname"
+            echo "  🛠️ $node_hostname"
         end
 
         # Run the dashboard with proper array expansion
@@ -84,4 +84,105 @@ function talos_context
     if test -n "$selected_title" -a -f ~/.kube/config
         cp ~/.kube/config ~/.kube/"$selected_title"
     end
+end
+
+# Function to upgrade all Talos nodes one by one
+function talos_upgrade
+    # Check if arguments are provided
+    if test (count $argv) -eq 0
+        echo "❌ Usage: talos_upgrade <talosctl-upgrade-args>"
+        echo "   Example: talos_upgrade -i factory.talos.dev/installer/abc123:v1.10.3"
+        echo "   Example: talos_upgrade -i factory.talos.dev/installer/abc123:v1.10.3 --preserve"
+        return 1
+    end
+
+    echo "🔄 Starting Talos upgrade with args: $argv"
+
+    # Get all cluster members
+    echo "🔍 Fetching cluster members..."
+
+    set -l control_hostnames
+    set -l worker_hostnames
+
+    # Process the output line by line to categorize nodes
+    for line in (talosctl get members -o yaml | grep "hostname:" | awk '{print $2}')
+        set node_hostname (string trim $line)
+        if test -n "$node_hostname"
+            # Check if it's a control plane node
+            if string match -q "*control*" "$node_hostname"
+                set -a control_hostnames $node_hostname
+            else
+                set -a worker_hostnames $node_hostname
+            end
+        end
+    end
+
+    # If no members were found, exit
+    if test (count $control_hostnames) -eq 0 -a (count $worker_hostnames) -eq 0
+        echo "⚠️ No cluster members found."
+        return 1
+    end
+
+    # Display discovered nodes
+    for node_hostname in $control_hostnames
+        echo "  🎮 $node_hostname"
+    end
+
+    for node_hostname in $worker_hostnames
+        echo "  🛠️ $node_hostname"
+    end
+
+    echo ""
+
+    # Upgrade control plane nodes first
+    if test (count $control_hostnames) -gt 0
+        echo "🎮 Upgrading control planes..."
+        for node_hostname in $control_hostnames
+            # Run the upgrade command with user-provided args and current node
+            talosctl upgrade $argv -n $node_hostname
+
+            if test $status -ne 0
+                echo "❌ Failed to upgrade: $node_hostname"
+                return 1
+            end
+
+            # Check if this is not the last control plane node
+            if test $node_hostname != $control_hostnames[-1]
+                echo "⏳ Press Enter to continue with next control plane, or Ctrl+C to abort:"
+                read -l continue_upgrade
+            end
+        end
+
+        # Wait 30 seconds between control plane and worker nodes
+        if test (count $worker_hostnames) -gt 0
+            echo ""
+            echo "⏳ Waiting 30 seconds before upgrading worker nodes..."
+            sleep 30
+            echo ""
+        end
+    end
+
+    # Upgrade worker nodes
+    if test (count $worker_hostnames) -gt 0
+        echo "🛠️ Upgrading workers..."
+        for node_hostname in $worker_hostnames
+            # Run the upgrade command with user-provided args and current node
+            talosctl upgrade $argv -n $node_hostname
+
+            if test $status -ne 0
+                echo "❌ Failed to upgrade: $node_hostname"
+                return 1
+            end
+
+            # Check if this is not the last worker node
+            if test $node_hostname != $worker_hostnames[-1]
+                echo "⏳ Press Enter to continue with next worker, or Ctrl+C to abort:"
+                read -l continue_upgrade
+            end
+        end
+    end
+
+    echo ""
+    echo "🎉 All nodes have been upgraded!"
+    return 0
 end
