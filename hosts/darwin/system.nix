@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, vars, ... }:
 
 ###################################################################################
 #
@@ -23,7 +23,7 @@
           "/System/Applications/Calendar.app"
           "/Applications/WhatsApp.app"
           "/System/Applications/Messages.app"
-          "${pkgs.vesktop}/Applications/Vesktop.app"
+          "/Users/${vars.user.name}/Applications/Home Manager Apps/Discord.app"
           "${pkgs.obsidian}/Applications/Obsidian.app"
           "/Applications/Things3.app"
           "/Applications/Linear.app"
