@@ -27,7 +27,7 @@
           "${pkgs.obsidian}/Applications/Obsidian.app"
           "/Applications/Things3.app"
           "/Applications/Linear.app"
-          "/Applications/kitty.app"
+          "${pkgs.kitty}/Applications/kitty.app"
           "${pkgs.utm}/Applications/UTM.app"
           "/Applications/Shadow PC Beta.app"
           "/System//Applications/Music.app"
