@@ -18,7 +18,7 @@ default:
 deploy: lint
     # Deploying system configuration without update...
     @git add .
-    @NIX_CONFIG="{{NIX_CONFIG}}" nix run nixpkgs#nh -- {{nix_cmd}} switch -a -H {{nix_host}} $NIX_GIT_PATH
+    @NIX_CONFIG="{{NIX_CONFIG}}" nix run github:nix-community/nh -- {{nix_cmd}} switch -a -H {{nix_host}} $NIX_GIT_PATH
 
 [group('nix')]
 [doc('Deploy system configuration')]
@@ -26,14 +26,14 @@ deploy-update: lint
     # Deploying system configuration with update...
     @git pull || true
     @git add .
-    @NIX_CONFIG="{{NIX_CONFIG}}" nix run nixpkgs#nh -- {{nix_cmd}} switch -u -a -H {{nix_host}} $NIX_GIT_PATH
+    @NIX_CONFIG="{{NIX_CONFIG}}" nix run github:nix-community/nh -- {{nix_cmd}} switch -u -a -H {{nix_host}} $NIX_GIT_PATH
 
 [group('nix')]
 [doc('Upgrade flake inputs and deploy')]
 upgrade: update-refs lint
     @git pull || true
     @git add .
-    @NIX_CONFIG="{{NIX_CONFIG}}" nix run nixpkgs#nh -- {{nix_cmd}} switch -u -a -H {{nix_host}} $NIX_GIT_PATH
+    @NIX_CONFIG="{{NIX_CONFIG}}" nix run github:nix-community/nh -- {{nix_cmd}} switch -u -a -H {{nix_host}} $NIX_GIT_PATH
     @git add .
     @if git log -1 --pretty=%B | grep -q "chore(deps): updated inputs and refs"; then \
         echo "Amending previous dependency update commit..."; \
@@ -54,7 +54,7 @@ update-refs:
 [group('maintain')]
 [doc('Clean and optimise the nix store with nh')]
 clean:
-    @nix run nixpkgs#nh -- clean all -a -k 2 -K 7d
+    @nix run github:nix-community/nh -- clean all -a -k 2 -K 7d
 
 [group('maintain')]
 [doc('Optimise the nix store')]
