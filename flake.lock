@@ -10,8 +10,8 @@
         "nixpkgs_fork": "nixpkgs_fork"
       },
       "locked": {
-        "lastModified": 1750435965,
-        "narHash": "sha256-651/zn882h0PoqbXz0CfxuL65ucPUWsx6mURw6NG1Fk=",
+        "lastModified": 1750436297,
+        "narHash": "sha256-E7W8cAOpR54F0ur8Pf6mtqwEWSsD92OmpRfCl+T+U/I=",
         "path": "/Users/josefhofer/CodeProjects/github.com/ojsef39/nix-base/",
         "type": "path"
       },
