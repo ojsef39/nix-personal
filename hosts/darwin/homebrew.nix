@@ -46,7 +46,7 @@
       "imageoptim"
       "moonlight"
       "parsec"
-      "wireshark"
+      "wireshark-app"
     ];
   };
 }
