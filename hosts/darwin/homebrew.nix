@@ -40,12 +40,13 @@
 
     # macOS-specific apps and those not available/stable in nixpkgs
     casks = [
+      "Signal"
       "brooklyn"
       "dockdoor"
       "imageoptim"
       "moonlight"
       "parsec"
-      "wireshark"
+      "wireshark-app"
     ];
   };
 }
