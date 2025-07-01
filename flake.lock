@@ -11,7 +11,6 @@
       },
       "locked": {
         "lastModified": 1751275042,
-        "narHash": "sha256-UrcLC8mkqFw9oDKBlAAlo1rXpf9nYFZcje8rKT8KzS8=",
         "owner": "ojsef39",
         "repo": "nix-base",
         "rev": "4260e5057a0eaec16f39dd4a56b84de623f92309",
@@ -170,7 +169,6 @@
     "nixpkgs_fork": {
       "locked": {
         "lastModified": 1750769263,
-        "narHash": "sha256-CmEPHqmhZNHOFYTkm75ua4bHjnULkxfK3tZJPrRA4cQ=",
         "owner": "ojsef39",
         "repo": "nixpkgs",
         "rev": "76af17d40c0ddac2a679dc23c6f78b553ee4fa00",
