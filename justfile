@@ -66,6 +66,11 @@ optimise:
 repair:
     @sudo nix-store --verify --check-contents --repair
 
+[group('maintain')]
+[doc('Selectively rollback flake inputs')]
+rollback:
+    @./scripts/flake-rollback.fish
+
 [group('lint')]
 [doc('Lint all nix files using statix and deadnix')]
 lint: format
