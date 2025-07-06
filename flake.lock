@@ -11,6 +11,7 @@
       },
       "locked": {
         "lastModified": 1751275042,
+        "narHash": "sha256-UrcLC8mkqFw9oDKBlAAlo1rXpf9nYFZcje8rKT8KzS8=",
         "owner": "ojsef39",
         "repo": "nix-base",
         "rev": "4260e5057a0eaec16f39dd4a56b84de623f92309",
@@ -31,6 +32,7 @@
       },
       "locked": {
         "lastModified": 1751313918,
+        "narHash": "sha256-HsJM3XLa43WpG+665aGEh8iS8AfEwOIQWk3Mke3e7nk=",
         "owner": "lnl7",
         "repo": "nix-darwin",
         "rev": "e04a388232d9a6ba56967ce5b53a8a6f713cdfcf",
@@ -83,10 +85,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1751812549,
+        "lastModified": 1751823746,
+        "narHash": "sha256-Yg3bcdaATDavXBRJWmxwNgmlx5mvDtUH3rqu8mDZlbc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "153e680c4263fbd8fa416ef5b8ef13397e02fd2f",
+        "rev": "9d21f9985e279bb5d35dbf03a25644ed6e954d8c",
         "type": "github"
       },
       "original": {
@@ -106,6 +109,7 @@
       },
       "locked": {
         "lastModified": 1751645863,
+        "narHash": "sha256-mGDs2BEr/eaN4qzbj8tbNlgvMjdkUgDIKn64RlE61BE=",
         "owner": "kaylorben",
         "repo": "nixcord",
         "rev": "e52e547ed83a11fdbbcdfc787ccbaa6c30a7656d",
@@ -120,6 +124,7 @@
     "nixkit": {
       "locked": {
         "lastModified": 1751440119,
+        "narHash": "sha256-Pxg/YXKIffv0Kui9M2TSPONSjXuXl1blOxZD7jlRTrM=",
         "owner": "frostplexx",
         "repo": "nixkit",
         "rev": "814902866c67734f1c656636b77c1661b79d443e",
@@ -134,6 +139,7 @@
     "nixpkgs": {
       "locked": {
         "lastModified": 1751637120,
+        "narHash": "sha256-xVNy/XopSfIG9c46nRmPaKfH1Gn/56vQ8++xWA8itO4=",
         "owner": "nixos",
         "repo": "nixpkgs",
         "rev": "5c724ed1388e53cc231ed98330a60eb2f7be4be3",
@@ -164,6 +170,7 @@
     "nixpkgs_fork": {
       "locked": {
         "lastModified": 1750769263,
+        "narHash": "sha256-CmEPHqmhZNHOFYTkm75ua4bHjnULkxfK3tZJPrRA4cQ=",
         "owner": "ojsef39",
         "repo": "nixpkgs",
         "rev": "76af17d40c0ddac2a679dc23c6f78b553ee4fa00",
