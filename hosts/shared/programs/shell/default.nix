@@ -30,6 +30,22 @@
         set -gx PYTHONPATH $old_pythonpath
         set -gx PATH $old_path
       '';
+
+      renovate_summary_debug = ''
+        set -l token (gh auth token)
+
+        if test -z "$token"
+            echo "Error: Could not get GitHub token. Make sure you're authenticated with 'gh auth login'"
+            return 1
+        end
+
+        podman run --rm -it \
+            -v $PWD:/usr/src/app \
+            -e LOG_LEVEL=debug \
+            -e GITHUB_COM_TOKEN=$token \
+            renovate/renovate \
+            --platform=local
+      '';
     };
 
     shellAliases = {
