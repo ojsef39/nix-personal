@@ -74,8 +74,8 @@ rollback:
 [group('lint')]
 [doc('Lint all nix files using statix and deadnix')]
 lint: format
-    @nix run nixpkgs#statix -- check .
-    @nix run nixpkgs#deadnix -- -eq .
+    @NIX_CONFIG="{{NIX_CONFIG}}" nix run nixpkgs#statix -- check .
+    @NIX_CONFIG="{{NIX_CONFIG}}" nix run nixpkgs#deadnix -- -eq .
 
 [group('lint')]
 [doc('Format files using alejandra')]
