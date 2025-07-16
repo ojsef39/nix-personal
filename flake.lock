@@ -10,6 +10,7 @@
       },
       "locked": {
         "lastModified": 1752594398,
+        "narHash": "sha256-mkvQG+H4Ih1txqZCQv78as0R0Y73SuiVdNu2hvZz5k4=",
         "owner": "ojsef39",
         "repo": "nix-base",
         "rev": "e8d83d069ca196b7efad6812f71803c5522b4a21",
@@ -104,6 +105,7 @@
       },
       "locked": {
         "lastModified": 1752630055,
+        "narHash": "sha256-8Zy45wx4VcizLOmqwo/IcQjwmAxC5+qWUJosymP6FwQ=",
         "owner": "kaylorben",
         "repo": "nixcord",
         "rev": "dd72b4445bac0fcfe50e7107dfbff6b03895848f",
@@ -124,6 +126,7 @@
       },
       "locked": {
         "lastModified": 1752579183,
+        "narHash": "sha256-cSB8Wg3f3wT1nslG+8azyg+gfrDceexSYxs4aoFxUws=",
         "owner": "frostplexx",
         "repo": "nixkit",
         "rev": "f5a7a3070a95294735ac2dcdfb8e0376ab6e998a",
