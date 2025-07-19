@@ -81,12 +81,12 @@
         ]
       },
       "locked": {
-        "lastModified": 1752603129,
-        "narHash": "sha256-S+wmHhwNQ5Ru689L2Gu8n1OD6s9eU9n9mD827JNR+kw=",
-        "rev": "e8c19a3cec2814c754f031ab3ae7316b64da085b",
-        "revCount": 5082,
+        "lastModified": 1752814804,
+        "narHash": "sha256-irfg7lnfEpJY+3Cffkluzp2MTVw1Uq9QGxFp6qadcXI=",
+        "rev": "d0300c8808e41da81d6edfc202f3d3833c157daf",
+        "revCount": 5094,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/nix-community/home-manager/0.1.5082%2Brev-e8c19a3cec2814c754f031ab3ae7316b64da085b/019811c1-b0f5-734e-a339-b8ecf190ee20/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/nix-community/home-manager/0.1.5094%2Brev-d0300c8808e41da81d6edfc202f3d3833c157daf/01981c0e-b616-7b9a-adf1-a957b328b46f/source.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -103,10 +103,10 @@
         ]
       },
       "locked": {
-        "lastModified": 1752630055,
+        "lastModified": 1752888590,
         "owner": "kaylorben",
         "repo": "nixcord",
-        "rev": "dd72b4445bac0fcfe50e7107dfbff6b03895848f",
+        "rev": "0563a8fe6eb4228eb3abad84401bafa750006912",
         "type": "github"
       },
       "original": {
@@ -137,12 +137,12 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1752480373,
-        "narHash": "sha256-JHQbm+OcGp32wAsXTE/FLYGNpb+4GLi5oTvCxwSoBOA=",
-        "rev": "62e0f05ede1da0d54515d4ea8ce9c733f12d9f08",
-        "revCount": 830073,
+        "lastModified": 1752687322,
+        "narHash": "sha256-RKwfXA4OZROjBTQAl9WOZQFm7L8Bo93FQwSJpAiSRvo=",
+        "rev": "6e987485eb2c77e5dcc5af4e3c70843711ef9251",
+        "revCount": 831064,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/NixOS/nixpkgs/0.1.830073%2Brev-62e0f05ede1da0d54515d4ea8ce9c733f12d9f08/01980c9b-b772-7845-b3a6-0d40f1f219ce/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/NixOS/nixpkgs/0.1.831064%2Brev-6e987485eb2c77e5dcc5af4e3c70843711ef9251/01981ea0-7dde-72e3-b5a6-aeb8e23b53b1/source.tar.gz"
       },
       "original": {
         "type": "tarball",
