@@ -10,60 +10,69 @@
     nixcord.follows = "base/nixcord";
   };
 
-  outputs = { base, ... }: let
-    vars = {
-      user = {
+  outputs =
+    { base, ... }:
+    let
+      vars = {
+        user = {
           name = "josefhofer";
           full_name = "Josef Hofer";
           email = "me@jhofer.de";
-          uid= 501;
+          uid = 501;
         };
-      git = {
-        ghq = "CodeProjects";
-        url = "";
-        lazy = {
-          # authorColors = {
-          #   "test[bot]" = "#f4dbd6"; # Rosewater
-          #   "dependabot[bot]" = "#f4dbd6"; # Rosewater
-          # };
+        git = {
+          ghq = "CodeProjects";
+          url = "";
+          lazy = {
+            # authorColors = {
+            #   "test[bot]" = "#f4dbd6"; # Rosewater
+            #   "dependabot[bot]" = "#f4dbd6"; # Rosewater
+            # };
+          };
+          nix = "$HOME/${vars.git.ghq}/github.com/ojsef39/nix-personal";
         };
-        nix = "$HOME/${vars.git.ghq}/github.com/ojsef39/nix-personal";
+        kitty.project_selector = "~/.config";
+        is_vm = false;
       };
-      kitty.project_selector = "~/.config";
-      is_vm = false;
-    };
-    system.darwin.aarch = "aarch64-darwin";
-  in {
-    darwinConfigurations = {
-      "mac" = base.inputs.darwin.lib.darwinSystem {
-        system = system.darwin.aarch;
-        modules = base.outputs.sharedModules ++ base.outputs.macModules ++ [
-          ({ vars, ... }: {
-            home-manager.users.${vars.user.name} = import ./hosts/shared/import.nix;
-          })
-          ./hosts/darwin/import.nix
-          (import ./hosts/darwin/homebrew.nix)
-        ];
-        specialArgs = { inherit vars system; };
+      system.darwin.aarch = "aarch64-darwin";
+    in
+    {
+      darwinConfigurations = {
+        "mac" = base.inputs.darwin.lib.darwinSystem {
+          system = system.darwin.aarch;
+          modules =
+            base.outputs.sharedModules
+            ++ base.outputs.macModules
+            ++ [
+              (
+                { vars, ... }:
+                {
+                  home-manager.users.${vars.user.name} = import ./hosts/shared/import.nix;
+                }
+              )
+              ./hosts/darwin/import.nix
+              (import ./hosts/darwin/homebrew.nix)
+            ];
+          specialArgs = { inherit vars system; };
+        };
       };
-    };
 
-    # Uncomment and adjust the following section if needed
-    # nixosConfigurations = {
-    #   "linux" = nixpkgs.lib.nixosSystem {
-    #     system = system.nixos.aarch;
-    #     modules = [
-    #       base.baseModules
-    #       {
-    #         programs.bash = {
-    #           enable = true;
-    #           shellAliases = {
-    #             open = "xdg-open";
-    #           };
-    #         };
-    #       }
-    #     ];
-    #   };
-    # };
-  };
+      # Uncomment and adjust the following section if needed
+      # nixosConfigurations = {
+      #   "linux" = nixpkgs.lib.nixosSystem {
+      #     system = system.nixos.aarch;
+      #     modules = [
+      #       base.baseModules
+      #       {
+      #         programs.bash = {
+      #           enable = true;
+      #           shellAliases = {
+      #             open = "xdg-open";
+      #           };
+      #         };
+      #       }
+      #     ];
+      #   };
+      # };
+    };
 }

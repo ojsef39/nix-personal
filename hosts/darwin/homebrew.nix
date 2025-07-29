@@ -2,7 +2,7 @@
 {
   # Homebrew for macOS-specific and unavailable packages
   homebrew = {
-    taps = [];
+    taps = [ ];
 
     # Mac App Store apps
     masApps = lib.mkIf (!vars.is_vm) {
@@ -50,4 +50,3 @@
     ];
   };
 }
-
