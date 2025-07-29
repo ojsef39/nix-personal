@@ -1,4 +1,5 @@
-{ vars, ...}: {
+{ vars, ... }:
+{
   programs.git = {
     userName = "${vars.user.full_name}";
     userEmail = "${vars.user.email}";

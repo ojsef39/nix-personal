@@ -1,4 +1,5 @@
-{ vars, ... }: {
+{ vars, ... }:
+{
 
   programs.fish = {
     interactiveShellInit = ''

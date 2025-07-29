@@ -1,4 +1,9 @@
-{ pkgs, config, vars, ... }:
+{
+  pkgs,
+  config,
+  vars,
+  ...
+}:
 
 ###################################################################################
 #
@@ -23,7 +28,9 @@
           "/System/Applications/Calendar.app"
           "/Applications/WhatsApp.app"
           "/System/Applications/Messages.app"
-          "${config.home-manager.users.${vars.user.name}.programs.nixcord.vesktop.package}/Applications/Vesktop.app"
+          "${
+            config.home-manager.users.${vars.user.name}.programs.nixcord.vesktop.package
+          }/Applications/Vesktop.app"
           "${pkgs.obsidian}/Applications/Obsidian.app"
           "/Applications/Things3.app"
           "/Applications/Linear.app"
@@ -39,4 +46,3 @@
     };
   };
 }
-
