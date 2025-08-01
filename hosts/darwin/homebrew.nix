@@ -29,12 +29,8 @@
       "Graphviz"
       "expect"
       "fluxcd/tap/flux"
-      "git-secret"
       "iperf3"
-      "kubeconform"
-      "kustomize"
       "talosctl"
-      "yq"
       # "docx2pdf" ##TODO: Needs tap
     ];
 
