@@ -11,14 +11,17 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1754864282,
-        "narHash": "sha256-+j6F5EaXRZPri5tr06qsOqIeCMTSJPq7TFBv7+2IRCw=",
-        "path": "/Users/josefhofer/CodeProjects/github.com/ojsef39/nix-base/",
-        "type": "path"
+        "lastModified": 1755160694,
+        "narHash": "sha256-OZqE5DNLy5LNd2qZVZgAEpgILhR3Ucqv+2LbddAthAQ=",
+        "owner": "ojsef39",
+        "repo": "nix-base",
+        "rev": "b47cf6d8f783bff5d948ebbcbf6c4ca98dba661f",
+        "type": "github"
       },
       "original": {
-        "path": "/Users/josefhofer/CodeProjects/github.com/ojsef39/nix-base/",
-        "type": "path"
+        "owner": "ojsef39",
+        "repo": "nix-base",
+        "type": "github"
       }
     },
     "darwin": {
@@ -81,12 +84,12 @@
         ]
       },
       "locked": {
-        "lastModified": 1754974548,
-        "narHash": "sha256-XMjUjKD/QRPcqUnmSDczSYdw46SilnG0+wkho654DFM=",
-        "rev": "27a26be51ff0162a8f67660239f9407dba68d7c5",
-        "revCount": 5269,
+        "lastModified": 1755121891,
+        "narHash": "sha256-UtYkukiGnPRJ5rpd4W/wFVrLMh8fqtNkqHTPgHEtrqU=",
+        "rev": "279ca5addcdcfa31ac852b3ecb39fc372684f426",
+        "revCount": 5272,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/nix-community/home-manager/0.1.5269%2Brev-27a26be51ff0162a8f67660239f9407dba68d7c5/01989cca-4adb-7e49-8d6b-7985ca8d5fd6/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/nix-community/home-manager/0.1.5272%2Brev-279ca5addcdcfa31ac852b3ecb39fc372684f426/0198a718-656d-7296-a1c6-e58af774a88b/source.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -146,11 +149,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1754986808,
-        "narHash": "sha256-0hirQhqU4TlIf6qIUJnEJRUKIafPi8EEdsFriR20kTs=",
+        "lastModified": 1755134911,
+        "narHash": "sha256-QQl7c3BusCIHEmadfXLGiHccIJ0k9h1w6kYucGl4wOY=",
         "owner": "kaylorben",
         "repo": "nixcord",
-        "rev": "525b87b42285e5a88db1e746426554efb326e081",
+        "rev": "0dcda512aa9d3fe2c915b53cb60106105947a598",
         "type": "github"
       },
       "original": {
