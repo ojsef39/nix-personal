@@ -1,4 +1,7 @@
 _: {
+  home.file = {
+    ".config/1Password/ssh/agent.toml".source = ./1password-agent.toml;
+  };
   programs.ssh = {
     matchBlocks = {
       # JHC K8s
