@@ -17,6 +17,10 @@
         vcs = "git";
         root = "~/${vars.git.ghq}";
       };
+      "ghq \"https://gitlab.die-linke.de/\"" = {
+        vcs = "git";
+        root = "~/${vars.git.ghq}";
+      };
 
       gpg = {
         format = "ssh";

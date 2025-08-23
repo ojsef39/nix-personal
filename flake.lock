@@ -5,17 +5,16 @@
         "darwin": "darwin",
         "home-manager": "home-manager",
         "nh": "nh",
-        "nix-darwin-linking": "nix-darwin-linking",
         "nixcord": "nixcord",
         "nixkit": "nixkit",
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1755276044,
-        "narHash": "sha256-LhlV4ahpvYiTfinDrEeF40Rh44yWQb1kMPUCSVnf6zQ=",
+        "lastModified": 1755853658,
+        "narHash": "sha256-GHDw7CUwAofTbrjUNZKqSQ2sm0VYoUwE1mwA6cSb9b0=",
         "owner": "ojsef39",
         "repo": "nix-base",
-        "rev": "fc187ef927f920c7e7e5b884d62ceaf15e6de6a5",
+        "rev": "63f694ade61159c22851f74540a5b6298c07f6c2",
         "type": "github"
       },
       "original": {
@@ -32,12 +31,12 @@
         ]
       },
       "locked": {
-        "lastModified": 1755275010,
-        "narHash": "sha256-lEApCoWUEWh0Ifc3k1JdVjpMtFFXeL2gG1qvBnoRc2I=",
-        "rev": "7220b01d679e93ede8d7b25d6f392855b81dd475",
-        "revCount": 2231,
+        "lastModified": 1755825449,
+        "narHash": "sha256-XkiN4NM9Xdy59h69Pc+Vg4PxkSm9EWl6u7k6D5FZ5cM=",
+        "rev": "8df64f819698c1fee0c2969696f54a843b2231e8",
+        "revCount": 2240,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/nix-darwin/nix-darwin/0.1.2231%2Brev-7220b01d679e93ede8d7b25d6f392855b81dd475/0198aed0-fa87-76b2-a602-654b6b4f395d/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/nix-darwin/nix-darwin/0.1.2240%2Brev-8df64f819698c1fee0c2969696f54a843b2231e8/0198cf6c-148f-7280-9b43-cb56fd780d96/source.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -84,12 +83,12 @@
         ]
       },
       "locked": {
-        "lastModified": 1755397986,
-        "narHash": "sha256-qwrF5laj6eE3Zht0wKYTmH6QzL7bdOyE2f6jd3WCO8g=",
-        "rev": "8b4ac149687e8520187a66f05e9d4eafebf96522",
-        "revCount": 5276,
+        "lastModified": 1755914636,
+        "narHash": "sha256-VJ+Gm6YsHlPfUCpmRQxvdiZW7H3YPSrdVOewQHAhZN8=",
+        "rev": "8b55a6ac58b678199e5bba701aaff69e2b3281c0",
+        "revCount": 5308,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/nix-community/home-manager/0.1.5276%2Brev-8b4ac149687e8520187a66f05e9d4eafebf96522/0198b689-9a13-768d-ae4c-e502996f5689/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/nix-community/home-manager/0.1.5308%2Brev-8b55a6ac58b678199e5bba701aaff69e2b3281c0/0198d4ac-3f28-7f6f-b860-01b1c2eb26a0/source.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -104,38 +103,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1755373271,
-        "narHash": "sha256-/BwWjGs8Uc+jB7sofZJVgZYtw5/7BMKfBwNN7VzXVAM=",
+        "lastModified": 1755510252,
+        "narHash": "sha256-IPwAGaR9LO4LasxIFPqOTmIfliDsnzWVgzsaIekzRG4=",
         "owner": "nix-community",
         "repo": "nh",
-        "rev": "8d17f68b4354cdaaf25b41cd83b2cc1b0c16b413",
+        "rev": "8d690296fb3b898da565b33455a4227aed8a3133",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
         "repo": "nh",
-        "type": "github"
-      }
-    },
-    "nix-darwin-linking": {
-      "inputs": {
-        "nixpkgs": [
-          "base",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1750492472,
-        "narHash": "sha256-0FKpJlzwgbvM2eD+hq9M363CEStiJUAh880fsIBMwUQ=",
-        "owner": "dwt",
-        "repo": "nix-darwin",
-        "rev": "be2d7d653567f49223d4d675e4a7d268a6ce90ba",
-        "type": "github"
-      },
-      "original": {
-        "owner": "dwt",
-        "ref": "application-linking-done-right",
-        "repo": "nix-darwin",
         "type": "github"
       }
     },
@@ -149,11 +126,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1755395461,
-        "narHash": "sha256-2zsR2QAE7wnDWzzMpVDpV6k+PCrcoVf1+yiNd4dbd08=",
+        "lastModified": 1755912028,
+        "narHash": "sha256-lWLnhlFXiLzFqDQutSSJ5Du40g7sREPB5avz1EkC5yk=",
         "owner": "kaylorben",
         "repo": "nixcord",
-        "rev": "b1260171b674953712e093acfd285585f6586a01",
+        "rev": "c33bf0d790e931547786359db541849c2fba2d95",
         "type": "github"
       },
       "original": {
@@ -170,11 +147,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1754232724,
-        "narHash": "sha256-5R/Xs94qdmitZf5Plt1qjhU61ftYAXvGNLtZ6+vj0Ko=",
+        "lastModified": 1755793237,
+        "narHash": "sha256-txWzKtka3qZhaTJmZKQltSDy3GWx6fnGx+eRWHIyGu4=",
         "owner": "frostplexx",
         "repo": "nixkit",
-        "rev": "5a7573be0cf23027f1d5fea10d461a420f59badf",
+        "rev": "bbd36c2659b641896786432f53278a7d121e0834",
         "type": "github"
       },
       "original": {
