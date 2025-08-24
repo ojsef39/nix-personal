@@ -7,7 +7,7 @@ alias u := upgrade
 nix_cmd := `if [ "$(uname)" = "Darwin" ]; then echo "darwin"; else echo "os"; fi`
 nix_host := `if [ "$(uname)" = "Darwin" ]; then echo "mac"; else echo "nixos"; fi`
 # Use GITHUB_TOKEN from 1Password to prevent rate limiting
-NIX_CONFIG := "access-tokens = github.com=$(op read op://Personal/GITHUB_TOKEN/no_access)"
+NIX_CONFIG := `if [ "$GITHUB_ACTIONS" != "true" ]; then echo "access-tokens = github.com=$(op read op://Personal/GITHUB_TOKEN/no_access)"; fi`
 
 [doc('HELP')]
 default:
