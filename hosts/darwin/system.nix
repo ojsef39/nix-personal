@@ -4,7 +4,6 @@
   vars,
   ...
 }:
-
 ###################################################################################
 #
 #  macOS's System configuration
@@ -15,7 +14,6 @@
 #  See your own values with for example: `defaults read com.apple.dock tilesize`
 #
 ###################################################################################
-
 {
   system = {
     defaults = {

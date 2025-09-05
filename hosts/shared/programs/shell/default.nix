@@ -1,6 +1,4 @@
-{ vars, ... }:
-{
-
+{vars, ...}: {
   programs.fish = {
     interactiveShellInit = ''
       # Export the talosconfig
@@ -62,5 +60,4 @@
       };
     };
   };
-
 }
