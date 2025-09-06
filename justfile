@@ -64,7 +64,7 @@ optimise:
 [group('maintain')]
 [doc('Verify and repair the nix-store')]
 repair:
-    @sudo nix-store --verify --check-contents --repair
+    @sudo nix-store --verify --check-contents --repair || true
 
 [group('maintain')]
 [doc('Selectively rollback flake inputs')]
