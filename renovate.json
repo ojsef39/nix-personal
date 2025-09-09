@@ -1,9 +1,9 @@
 {
   "nix": {
-    "enabled": false
+    "enabled": true
   },
   "lockFileMaintenance": {
-    "enabled": false,
+    "enabled": true,
     "schedule": ["at any time"]
   },
   "schedule": ["at any time"],
