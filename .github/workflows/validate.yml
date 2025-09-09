@@ -96,7 +96,7 @@ jobs:
           nix run nixpkgs#nh -- ${{ matrix.nix_cmd }} build --no-nom -H ${{ matrix.nix_host }} .
 
       - name: Setup Cachix
-        uses: cachix/cachix-action@v15
+        uses: cachix/cachix-action@v16
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         with:
           name: ojsef39
