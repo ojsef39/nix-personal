@@ -30,6 +30,7 @@
         nix = "$HOME/${vars.git.ghq}/github.com/ojsef39/nix-personal";
       };
       kitty.project_selector = "~/.config";
+      cache.community = true;
       is_vm = false;
     };
     system.darwin.aarch = "aarch64-darwin";
