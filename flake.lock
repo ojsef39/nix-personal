@@ -316,11 +316,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758298921,
-        "narHash": "sha256-u+Kf7GwRRp54tzz2Pek/tl8KVOT9YaypjoG6t41LMSw=",
+        "lastModified": 1758330997,
+        "narHash": "sha256-OGLb5lU3RiNSqfCDbQSnm+7DzLSldnfWFBWW8ec34G4=",
         "owner": "kaylorben",
         "repo": "nixcord",
-        "rev": "54dc770871cc3392b3a2b689568ba08ba1a4403a",
+        "rev": "f93293513fdf2a5d530e3c3bce9cc87bd9b47b2a",
         "type": "github"
       },
       "original": {
