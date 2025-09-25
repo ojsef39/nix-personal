@@ -363,11 +363,11 @@
     },
     "nixpkgs_fork": {
       "locked": {
-        "lastModified": 1758712070,
+        "lastModified": 1758792162,
         "narHash": "sha256-m044xkb/EmI517HTsC93DlfePQbC6fOOWvTVbyQlGA0=",
         "owner": "ojsef39",
         "repo": "nixpkgs",
-        "rev": "ae424f961a630257d97715126802af016b34fdcf",
+        "rev": "db5ffc3e8ab03f428242c395d6fd634d4c54f4f2",
         "type": "github"
       },
       "original": {
