@@ -8,14 +8,15 @@
         "nh": "nh",
         "nixcord": "nixcord",
         "nixkit": "nixkit",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nixpkgs_fork": "nixpkgs_fork"
       },
       "locked": {
-        "lastModified": 1758720647,
-        "narHash": "sha256-3q0jhMnQoVRmkDVstdoh/nbIvOznqC0M1tG08xM0v58=",
+        "lastModified": 1758789407,
+        "narHash": "sha256-gB5rZYQ50qjFacp9MP9iMnO33biZgTHDU3nggC9uXpE=",
         "owner": "ojsef39",
         "repo": "nix-base",
-        "rev": "3e29ab68ee20c569123bc4a5bea0ccd545c38a23",
+        "rev": "6ac42f33401fdec8217f22e118819c4d70eb5a5a",
         "type": "github"
       },
       "original": {
@@ -357,6 +358,22 @@
       "original": {
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
+    "nixpkgs_fork": {
+      "locked": {
+        "lastModified": 1758712070,
+        "narHash": "sha256-m044xkb/EmI517HTsC93DlfePQbC6fOOWvTVbyQlGA0=",
+        "owner": "ojsef39",
+        "repo": "nixpkgs",
+        "rev": "ae424f961a630257d97715126802af016b34fdcf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ojsef39",
+        "ref": "mist",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
