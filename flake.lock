@@ -364,11 +364,11 @@
     },
     "nixpkgs_claude_code_fork": {
       "locked": {
-        "lastModified": 1759226444,
-        "narHash": "sha256-9k59XdipyesW6N9QNBgMO5SJzboxgFu4+1aBxhDTOVM=",
+        "lastModified": 1759231159,
+        "narHash": "sha256-xvma98Fo2rM1sBhQFHKZ9bdE6Tu+OJDVrDFWOgmT2PM=",
         "owner": "mirkolenz",
         "repo": "nixpkgs",
-        "rev": "415ca2d4b420144f01039cf7c1061056403e5bb1",
+        "rev": "85c80b7355d4f63625915062375e7982d092808d",
         "type": "github"
       },
       "original": {
