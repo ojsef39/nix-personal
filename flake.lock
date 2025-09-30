@@ -9,14 +9,15 @@
         "nixcord": "nixcord",
         "nixkit": "nixkit",
         "nixpkgs": "nixpkgs",
+        "nixpkgs_claude_code_fork": "nixpkgs_claude_code_fork",
         "nixpkgs_fork": "nixpkgs_fork"
       },
       "locked": {
-        "lastModified": 1758973605,
-        "narHash": "sha256-YAeSaFRAopvbTn0Z8DvtYxxVbPt/kqF+FvR0rC52ErU=",
+        "lastModified": 1759220317,
+        "narHash": "sha256-aBWgUKgkGJmCEqeSRzv+XrX1BNaDw0XrgVUD2kV1mx4=",
         "owner": "ojsef39",
         "repo": "nix-base",
-        "rev": "eddbcf6eb7c8961626c43ed24bf8535d0a86ab0e",
+        "rev": "d6002d91d56cd862c679bcd50938f59b4a2ab5a3",
         "type": "github"
       },
       "original": {
@@ -358,6 +359,22 @@
       "original": {
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
+    "nixpkgs_claude_code_fork": {
+      "locked": {
+        "lastModified": 1759217573,
+        "narHash": "sha256-03LRHRlfkBX68u5M3TfG15k3KMN3ttUhSMwmI/0++I0=",
+        "owner": "mirkolenz",
+        "repo": "nixpkgs",
+        "rev": "11e888b2baa1c14c123cde20726e32bd72a93809",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mirkolenz",
+        "ref": "claude-code",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
