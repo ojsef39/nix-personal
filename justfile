@@ -17,6 +17,7 @@ default:
 [doc('Deploy system configuration')]
 deploy: lint
     # Deploying system configuration without update...
+    @git pull || true
     @git add .
     @NIX_CONFIG="{{NIX_CONFIG}}" nh {{nix_cmd}} switch -a -H {{nix_host}} $NIX_GIT_PATH
 
