@@ -31,7 +31,6 @@
     brews = [
       "Graphviz"
       "expect"
-      "fluxcd/tap/flux"
       "iperf3"
       "talosctl"
       # "docx2pdf" ##TODO: Needs tap
