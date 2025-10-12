@@ -213,12 +213,12 @@
         ]
       },
       "locked": {
-        "lastModified": 1760103600,
-        "narHash": "sha256-R4cltQFceN3POiPhBu7aTKsrwqTiwo6zjzmitrHD80E=",
-        "rev": "bcccb01d0a353c028cc8cb3254cac7ebae32929e",
-        "revCount": 5570,
+        "lastModified": 1760295538,
+        "narHash": "sha256-SgnrSgyWj2ezIftKRpf+C6AdYqTkXN4iJA+JRQtdjrk=",
+        "rev": "904fa32d77609f281ef32d5209926d81848b687a",
+        "revCount": 5584,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/nix-community/home-manager/0.1.5570%2Brev-bcccb01d0a353c028cc8cb3254cac7ebae32929e/0199ce5a-e39d-7dd9-84a1-31728b1bb240/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/nix-community/home-manager/0.1.5584%2Brev-904fa32d77609f281ef32d5209926d81848b687a/0199d9cb-8ee6-7704-aa85-dce26a27246b/source.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -239,11 +239,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1760082751,
-        "narHash": "sha256-aIAdEUaNE/J+DdH7qstr6D8QgRT0R8sCsDg8HvV1qkI=",
+        "lastModified": 1760227502,
+        "narHash": "sha256-xOc+y9NWsSdpqsSzX0DErThQ1netOiWZwOguvcXA7WQ=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "a7445585f3caff995d6aa62bdb5a29fb45639fce",
+        "rev": "0f104711589baa734fd51dd306f3976298e1d2e7",
         "type": "github"
       },
       "original": {
@@ -255,11 +255,11 @@
     "neovim-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1760052728,
-        "narHash": "sha256-7DSxZwD34xJRI/6koseN0QCTAH/BBWu8r2D2Cd3cWaU=",
+        "lastModified": 1760226073,
+        "narHash": "sha256-VBWMWwZutNJo5KLaIMTOhP0KCYAUY9NUOK7UhAcgdCM=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "b1c41a332d183c4cb003329f7c2a3f310f48273c",
+        "rev": "bc2fe135d11865b8ac33214e351312f5f454c4e8",
         "type": "github"
       },
       "original": {
@@ -299,11 +299,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760059169,
-        "narHash": "sha256-unpjVBCWhS3mzAciIG95fbC+Co+iAtvXAOyCb6/P8b8=",
+        "lastModified": 1760283924,
+        "narHash": "sha256-NVjO88PRPvl8hfUe+7ND/iwnHMYyIcPxeW4j2gsiBwM=",
         "owner": "kaylorben",
         "repo": "nixcord",
-        "rev": "ce6b66932f25c9516169b7e403391c62e4852799",
+        "rev": "1289d8550251dc72b7aaf8691e3ecb6898430e33",
         "type": "github"
       },
       "original": {
@@ -320,12 +320,12 @@
         ]
       },
       "locked": {
-        "lastModified": 1759911055,
-        "narHash": "sha256-wQIv6h3UzHbM/QsCF3dFZqM0tb3YrNQ7/uvjE72yO5E=",
-        "rev": "b4d87ba2fde25a67414604e2d5ef569375b3e00f",
-        "revCount": 71,
+        "lastModified": 1760192357,
+        "narHash": "sha256-1+SVOwSbjVVXCB7wLWcVdjCXTsySiwIiYi4uWdKu7Ts=",
+        "rev": "62b44beb4a59648500b9cfee9da2b9b662e93486",
+        "revCount": 72,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/JHOFER-Cloud/frostplexx-nixkit/0.1.71%2Brev-b4d87ba2fde25a67414604e2d5ef569375b3e00f/0199c4e4-d2e1-7676-82c4-49cc2d6aa017/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/JHOFER-Cloud/frostplexx-nixkit/0.1.72%2Brev-62b44beb4a59648500b9cfee9da2b9b662e93486/0199d456-24a9-7ee1-be33-3bc1f66596a1/source.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -334,12 +334,12 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1759070547,
-        "narHash": "sha256-JVZl8NaVRYb0+381nl7LvPE+A774/dRpif01FKLrYFQ=",
-        "rev": "647e5c14cbd5067f44ac86b74f014962df460840",
-        "revCount": 868532,
+        "lastModified": 1760164275,
+        "narHash": "sha256-gKl2Gtro/LNf8P+4L3S2RsZ0G390ccd5MyXYrTdMCFE=",
+        "rev": "362791944032cb532aabbeed7887a441496d5e6e",
+        "revCount": 875978,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/JHOFER-Cloud/NixOS-nixpkgs/0.1.868532%2Brev-647e5c14cbd5067f44ac86b74f014962df460840/0199968b-edd7-74d2-8e72-c451a6a2c969/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/JHOFER-Cloud/NixOS-nixpkgs/0.1.875978%2Brev-362791944032cb532aabbeed7887a441496d5e6e/0199d6ea-fc7a-71e3-a8dc-8a2d353a0d94/source.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -407,11 +407,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758728421,
-        "narHash": "sha256-ySNJ008muQAds2JemiyrWYbwbG+V7S5wg3ZVKGHSFu8=",
+        "lastModified": 1760120816,
+        "narHash": "sha256-gq9rdocpmRZCwLS5vsHozwB6b5nrOBDNc2kkEaTXHfg=",
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "rev": "5eda4ee8121f97b218f7cc73f5172098d458f1d1",
+        "rev": "761ae7aff00907b607125b2f57338b74177697ed",
         "type": "github"
       },
       "original": {
