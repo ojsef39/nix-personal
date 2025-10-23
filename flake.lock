@@ -13,11 +13,11 @@
         "nixpkgs_fork": "nixpkgs_fork"
       },
       "locked": {
-        "lastModified": 1761227531,
-        "narHash": "sha256-AjKIQ5XPTcjss5suvlTQ4j6gjBosQ6U3CisROv1WjNQ=",
+        "lastModified": 1761230718,
+        "narHash": "sha256-HBaaTCu8TE4lL0H3pm2y9xwZQescO7SCk3VuW4U3Ywk=",
         "owner": "ojsef39",
         "repo": "nix-base",
-        "rev": "98a4a2c33bb58a7a039f4787fa71052a07e41432",
+        "rev": "bd9ad085af798094dc8f92af75eb9b8bbe63f1b8",
         "type": "github"
       },
       "original": {
@@ -342,12 +342,12 @@
         ]
       },
       "locked": {
-        "lastModified": 1761191301,
-        "narHash": "sha256-xsRL2Oyb4YRZZ1Tu4WzR2uFg1n931bH+PfLdFcqtLg8=",
-        "rev": "4958aafe7b237dc1e857fb0c916efff72075048f",
-        "revCount": 5653,
+        "lastModified": 1761235135,
+        "narHash": "sha256-cux9xeceLIER1lBxUa1gMafkz7gg5ntcUmJBynWdBWI=",
+        "rev": "0adf9ba3f567da2d53af581a857aacf671aaa547",
+        "revCount": 5654,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/nix-community/home-manager/0.1.5653%2Brev-4958aafe7b237dc1e857fb0c916efff72075048f/019a0f2f-9aef-706d-bd73-8c4237cbec07/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/nix-community/home-manager/0.1.5654%2Brev-0adf9ba3f567da2d53af581a857aacf671aaa547/019a11cc-4f6b-7431-acf9-6836c8e2af3c/source.tar.gz"
       },
       "original": {
         "type": "tarball",
