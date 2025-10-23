@@ -35,6 +35,8 @@
     };
     system.darwin.aarch = "aarch64-darwin";
   in {
+    packages = base.lib.makePackages vars;
+
     darwinConfigurations = {
       "mac" = base.inputs.darwin.lib.darwinSystem {
         system = system.darwin.aarch;
