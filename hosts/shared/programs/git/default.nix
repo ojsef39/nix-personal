@@ -1,12 +1,15 @@
 {vars, ...}: {
   programs.git = {
-    userName = "${vars.user.full_name}";
-    userEmail = "${vars.user.email}";
     signing = {
       key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAnnOOtnSeqQ3+XjO2jaC5k0pk5BIZVB4YI3KukF4o83";
       signByDefault = true;
     };
-    extraConfig = {
+    settings = {
+      user = {
+        name = "${vars.user.full_name}";
+        email = "${vars.user.email}";
+      };
+
       # GHQ configurations
       "ghq \"https://github.com/\"" = {
         vcs = "git";
