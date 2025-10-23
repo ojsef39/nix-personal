@@ -46,9 +46,10 @@
           ++ [
             (
               {vars, ...}: {
-                home-manager.users.${vars.user.name} = import ./hosts/shared/import.nix;
+                home-manager.users.${vars.user.name} = import ./hosts/shared/import-hm.nix;
               }
             )
+            ./hosts/shared/import-sys.nix
             ./hosts/darwin/import.nix
             (import ./hosts/darwin/homebrew.nix)
           ];

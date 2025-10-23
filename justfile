@@ -81,7 +81,7 @@ lint: format
 [group('lint')]
 [doc('Format files using alejandra')]
 format:
-    @nix fmt . 2> /dev/null || echo "Warning: nix fmt failed, continuing anyway"
+    @NIX_CONFIG="{{NIX_CONFIG}}" nix run nixpkgs#alejandra -- .
 
 [group('lint')]
 [doc('Show diff between current and commited changes')]
