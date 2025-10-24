@@ -1,4 +1,6 @@
 # Function to display and launch Talos dashboard with all nodes
+#TODO: Better cancel behaviour
+#TODO: Dont upgrade nodes when they are already on the target version (unless specified with flag)
 function talos_dashboard
     # Get all cluster members
     echo "🔍 Fetching cluster members..."
@@ -90,12 +92,26 @@ end
 function talos_upgrade
     set -l k8s_mode false
     set -l upgrade_args
+    set -l rpi_image
 
-    # Check for --k8s flag
-    for arg in $argv
+    # Check for --k8s and --i-rpi flags
+    set -l skip_next false
+    for i in (seq (count $argv))
+        if $skip_next
+            set skip_next false
+            continue
+        end
+
+        set arg $argv[$i]
         if test "$arg" = --k8s
             set k8s_mode true
-        else
+        else if test "$arg" = --i-rpi
+            # Next argument is the RPI image
+            if test $i -lt (count $argv)
+                set rpi_image $argv[(math $i + 1)]
+                set skip_next true
+            end
+        else if not $skip_next
             set -a upgrade_args $arg
         end
     end
@@ -106,6 +122,10 @@ function talos_upgrade
         echo "❌ Usage: talos_upgrade <talosctl-upgrade-args>"
         echo "   Example: talos_upgrade -i factory.talos.dev/installer/abc123:v1.10.3"
         echo "   Example: talos_upgrade -i factory.talos.dev/installer/abc123:v1.10.3 --preserve"
+        echo ""
+        echo "   For clusters with Raspberry Pi nodes, use --i-rpi flag:"
+        echo "   Example: talos_upgrade -i factory.talos.dev/installer/abc:v1.10.6 --i-rpi ghcr.io/talos-rpi5/installer:v1.10.6-rpi5"
+        echo "   Example: talos_upgrade -i factory.talos.dev/installer/abc:v1.10.6 --i-rpi ghcr.io/talos-rpi5/installer:v1.10.6-rpi5 --preserve"
         echo ""
         echo "   For Kubernetes upgrades, use --k8s flag:"
         echo "   Example: talos_upgrade --k8s"
@@ -152,14 +172,38 @@ function talos_upgrade
         return 1
     end
 
+    # Check if any RPI nodes exist and validate --i-rpi flag
+    set -l has_rpi_nodes false
+    for node_hostname in $control_hostnames $worker_hostnames
+        if string match -q "*rpi*" "$node_hostname"
+            set has_rpi_nodes true
+            break
+        end
+    end
+
+    if $has_rpi_nodes; and test -z "$rpi_image"; and not $k8s_mode
+        echo "❌ Error: Raspberry Pi nodes detected but --i-rpi flag not provided."
+        echo "   Usage: talos_upgrade -i <regular-image> --i-rpi <rpi-image> [options]"
+        echo "   Example: talos_upgrade -i factory.talos.dev/installer/abc:v1.10.6 --i-rpi ghcr.io/talos-rpi5/installer:v1.10.6-rpi5"
+        return 1
+    end
+
     # Display discovered nodes
     for node_hostname in $control_hostnames
-        echo "  🎮 $node_hostname"
+        if string match -q "*rpi*" "$node_hostname"
+            echo "  🎮🥧 $node_hostname (RPI)"
+        else
+            echo "  🎮 $node_hostname"
+        end
     end
 
     if not $k8s_mode
         for node_hostname in $worker_hostnames
-            echo "  🛠️ $node_hostname"
+            if string match -q "*rpi*" "$node_hostname"
+                echo "  🛠️🥧 $node_hostname (RPI)"
+            else
+                echo "  🛠️ $node_hostname"
+            end
         end
     end
 
@@ -183,8 +227,27 @@ function talos_upgrade
     else if test (count $control_hostnames) -gt 0
         echo "🎮 Upgrading control planes..."
         for node_hostname in $control_hostnames
-            # Run the upgrade command with user-provided args and current node
-            talosctl $upgrade_cmd $upgrade_args -n $node_hostname
+            # Determine which image to use based on hostname
+            set -l node_upgrade_args $upgrade_args
+            if string match -q "*rpi*" "$node_hostname"
+                # Replace -i argument with RPI image
+                set node_upgrade_args
+                set -l skip_next false
+                for arg in $upgrade_args
+                    if $skip_next
+                        set skip_next false
+                        continue
+                    else if test "$arg" = "-i"
+                        set -a node_upgrade_args -i $rpi_image
+                        set skip_next true
+                    else
+                        set -a node_upgrade_args $arg
+                    end
+                end
+            end
+
+            # Run the upgrade command with appropriate image and current node
+            talosctl $upgrade_cmd $node_upgrade_args -n $node_hostname
 
             if test $status -ne 0
                 echo "❌ Failed to upgrade: $node_hostname"
@@ -211,8 +274,27 @@ function talos_upgrade
     if not $k8s_mode; and test (count $worker_hostnames) -gt 0
         echo "🛠️ Upgrading workers..."
         for node_hostname in $worker_hostnames
-            # Run the upgrade command with user-provided args and current node
-            talosctl $upgrade_cmd $upgrade_args -n $node_hostname
+            # Determine which image to use based on hostname
+            set -l node_upgrade_args $upgrade_args
+            if string match -q "*rpi*" "$node_hostname"
+                # Replace -i argument with RPI image
+                set node_upgrade_args
+                set -l skip_next false
+                for arg in $upgrade_args
+                    if $skip_next
+                        set skip_next false
+                        continue
+                    else if test "$arg" = "-i"
+                        set -a node_upgrade_args -i $rpi_image
+                        set skip_next true
+                    else
+                        set -a node_upgrade_args $arg
+                    end
+                end
+            end
+
+            # Run the upgrade command with appropriate image and current node
+            talosctl $upgrade_cmd $node_upgrade_args -n $node_hostname
 
             if test $status -ne 0
                 echo "❌ Failed to upgrade: $node_hostname"
