@@ -14,11 +14,11 @@
         "spicetify-nix": "spicetify-nix"
       },
       "locked": {
-        "lastModified": 1761589558,
-        "narHash": "sha256-HBKcr6pBgkT4IXEL+uEeYzW1PsNC6GNYf/jtUSBhsEU=",
+        "lastModified": 1761650601,
+        "narHash": "sha256-Z4pR3zEVWAmrpRcvOhcugCMHIJj8yu3jFQF2o99uTh8=",
         "owner": "ojsef39",
         "repo": "nix-base",
-        "rev": "11381975227a5e97c5cadbbc4ac10aace1f862f1",
+        "rev": "e1947c119c46c001c3ed61c1b32321da3ce6b074",
         "type": "github"
       },
       "original": {
