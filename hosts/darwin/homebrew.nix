@@ -33,7 +33,7 @@
       "expect"
       "iperf3"
       "talosctl"
-      # "docx2pdf" ##TODO: Needs tap
+      # "docx2pdf" #NOTE: Needs tap
     ];
 
     # macOS-specific apps and those not available/stable in nixpkgs
