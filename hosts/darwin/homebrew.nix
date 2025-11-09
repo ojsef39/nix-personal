@@ -25,6 +25,7 @@
       "Numbers" = 409203825;
       "Pixelmator Pro" = 1289583905;
       "Tailscale" = 1475387142;
+      # "waifu2x" = 1286485858;
     };
 
     # Homebrew formulae (CLI tools)
