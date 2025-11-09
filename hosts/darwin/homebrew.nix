@@ -9,21 +9,18 @@
 
     # Mac App Store apps
     masApps = lib.mkIf (!vars.is_vm) {
-      "CrystalFetch" = 6454431289;
-      "Parcel" = 639968404;
-      "Keynote" = 409183694;
-      "Final Cut Pro" = 424389933;
-      "Usage" = 1561788435;
-      "Motion" = 434290957;
-      "The Unarchiver" = 425424353;
-      "TestFlight" = 899247664;
-      "Ground News" = 1324203419;
       "Book Tracker" = 1496543317;
-      "Pages" = 409201541;
-      "Reeder" = 1529448980;
+      "CrystalFetch" = 6454431289;
+      "Final Cut Pro" = 424389933;
       "Goodnotes" = 1444383602;
+      "Ground News" = 1324203419;
+      "Keynote" = 409183694;
+      "Motion" = 434290957;
       "Numbers" = 409203825;
+      "Pages" = 409201541;
+      "Parcel" = 639968404;
       "Pixelmator Pro" = 1289583905;
+      "Reeder" = 1529448980;
       "Tailscale" = 1475387142;
       # "waifu2x" = 1286485858;
     };
