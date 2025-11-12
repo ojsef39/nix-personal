@@ -40,7 +40,6 @@
       "brooklyn"
       "dockdoor"
       "imageoptim"
-      "moonlight"
       "parsec"
       "wireshark-app"
     ];

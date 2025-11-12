@@ -34,7 +34,7 @@
           "/Applications/Linear.app"
           "${pkgs.kitty}/Applications/kitty.app"
           "${pkgs.utm}/Applications/UTM.app"
-          "/Applications/Shadow PC Beta.app"
+          "${pkgs.moonlight-qt}/Applications/Moonlight.app"
           "${
             config.home-manager.users.${vars.user.name}.programs.spicetify.spicedSpotify
           }/Applications/Spotify.app"
