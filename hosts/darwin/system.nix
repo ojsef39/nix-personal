@@ -34,8 +34,12 @@
           "/Applications/Linear.app"
           "${pkgs.kitty}/Applications/kitty.app"
           "${pkgs.utm}/Applications/UTM.app"
-          "/Applications/Shadow PC Beta.app"
-          "/System//Applications/Music.app"
+          "${pkgs.moonlight-qt}/Applications/Moonlight.app"
+          "${
+            config.home-manager.users.${vars.user.name}.programs.spicetify.spicedSpotify
+          }/Applications/Spotify.app"
+          # "/System//Applications/Music.app"
+          "/Applications/Reeder.app"
           "/System//Applications/System Settings.app"
           "/Applications/Yubico Authenticator.app"
           "/Applications/Claude.app"

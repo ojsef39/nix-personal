@@ -1,5 +1,7 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    # Add system packages here
+    ## media stuff
+    yt-dlp
+    moonlight-qt
   ];
 }
