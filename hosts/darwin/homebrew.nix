@@ -20,9 +20,7 @@
       "Pages" = 409201541;
       "Parcel" = 639968404;
       "Pixelmator Pro" = 1289583905;
-      "Reeder" = 1529448980;
       "TestFlight" = 899247664;
-      "The Unarchiver" = 425424353;
       # "waifu2x" = 1286485858;
     };
 
