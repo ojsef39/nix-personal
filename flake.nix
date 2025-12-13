@@ -20,6 +20,9 @@
       };
       git = {
         ghq = "CodeProjects";
+        callbacks = {
+          "gitlab.die-linke.de" = ''require("gitlinker.hosts").get_gitlab_type_url'';
+        };
         url = "";
         lazy = {
           # authorColors = {
