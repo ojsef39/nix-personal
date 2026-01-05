@@ -42,11 +42,11 @@
 
     darwinConfigurations = {
       "mac" = base.inputs.darwin.lib.darwinSystem {
-        system = system.darwin.aarch;
         modules =
           base.outputs.sharedModules
           ++ base.outputs.macModules
           ++ [
+            {nixpkgs.hostPlatform = system.darwin.aarch;}
             (
               {vars, ...}: {
                 home-manager.users.${vars.user.name} = import ./hosts/shared/import-hm.nix;
@@ -56,7 +56,7 @@
             ./hosts/darwin/import.nix
             (import ./hosts/darwin/homebrew.nix)
           ];
-        specialArgs = {inherit vars system;};
+        specialArgs = {inherit vars;};
       };
     };
 
