@@ -14,11 +14,11 @@
         "spicetify-nix": "spicetify-nix"
       },
       "locked": {
-        "lastModified": 1768062828,
-        "narHash": "sha256-JBAggHXYdxmFn5Nr8UQtT3bEJ5ueDSXYJsfxsEyGw/Y=",
+        "lastModified": 1768064524,
+        "narHash": "sha256-LehzvcSoWk2+BH34DYaZvHkWsMzMHju93i7c3drtX/0=",
         "owner": "ojsef39",
         "repo": "nix-base",
-        "rev": "990cded8e4b9306d7ef07483abd93307f50ff03b",
+        "rev": "e42568789cd5122e15fc54e95aa7d9cef955b272",
         "type": "github"
       },
       "original": {
@@ -248,12 +248,12 @@
         ]
       },
       "locked": {
-        "lastModified": 1768062556,
-        "narHash": "sha256-jgC3INik4sJCx31bR+DJMNCoRtSf/9rKL1ZSBVRL0AU=",
-        "rev": "312c4fe0bbf054e3c87ebad51792f2e6d2ce4f01",
-        "revCount": 6067,
+        "lastModified": 1768068402,
+        "narHash": "sha256-bAXnnJZKJiF7Xr6eNW6+PhBf1lg2P1aFUO9+xgWkXfA=",
+        "rev": "8bc5473b6bc2b6e1529a9c4040411e1199c43b4c",
+        "revCount": 6070,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/nix-community/home-manager/0.1.6067%2Brev-312c4fe0bbf054e3c87ebad51792f2e6d2ce4f01/019ba8bf-13d3-7c92-ba1b-ba95b3cd816b/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/nix-community/home-manager/0.1.6070%2Brev-8bc5473b6bc2b6e1529a9c4040411e1199c43b4c/019ba917-b2be-74df-9bae-bcf5f0b430bc/source.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -459,12 +459,12 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1767966113,
-        "narHash": "sha256-mSTsvXa4WveSRJexsmCbm9dY17B1fKp7NLpJxllpQw4=",
-        "rev": "5f02c91314c8ba4afe83b256b023756412218535",
-        "revCount": 924980,
+        "lastModified": 1767995494,
+        "narHash": "sha256-2EwKigq/8Yfl0D1+BaqsF1qh40DxX+rDdDyw1razX/Q=",
+        "rev": "45a1530683263666f42d1de4cdda328109d5a676",
+        "revCount": 925224,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/JHOFER-Cloud/NixOS-nixpkgs/0.1.924980%2Brev-5f02c91314c8ba4afe83b256b023756412218535/019ba66a-7d62-7e65-902f-a887d3880e53/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/JHOFER-Cloud/NixOS-nixpkgs/0.1.925224%2Brev-45a1530683263666f42d1de4cdda328109d5a676/019ba8fb-b915-7f8a-8ef0-3390cd86480d/source.tar.gz"
       },
       "original": {
         "type": "tarball",
