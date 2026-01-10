@@ -40,7 +40,6 @@
       "dockdoor"
       "imageoptim"
       "parsec"
-      "wireshark-app"
     ];
   };
 }
