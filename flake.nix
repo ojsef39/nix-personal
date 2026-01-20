@@ -1,16 +1,22 @@
 {
-  description = "personal nix configuration";
+  description = "personal nix configuration (test for nix-work compatibility)";
 
   inputs = {
-    base.url = "github:ojsef39/nix-base";
-    # base.url = "/Users/josefhofer/CodeProjects/github.com/ojsef39/nix-base/";
+    base.url = "/Users/josefhofer/CodeProjects/github.com/ojsef39/dotfiles.nix/";
     nixpkgs.follows = "base/nixpkgs";
     darwin.follows = "base/darwin";
     home-manager.follows = "base/home-manager";
     nixcord.follows = "base/nixcord";
+    nixkit.follows = "base/nixkit";
+    spicetify-nix.follows = "base/spicetify-nix";
+    determinate.follows = "base/determinate";
   };
 
-  outputs = {base, ...}: let
+  outputs = {
+    base,
+    darwin,
+    ...
+  }: let
     vars = {
       user = {
         name = "josefhofer";
@@ -35,18 +41,22 @@
       kitty.project_selector = "~/.config";
       cache.community = true;
       is_vm = false;
+      kubectl-debug.imageName = "kubectl-debug";
     };
-    system.darwin.aarch = "aarch64-darwin";
   in {
     packages = base.lib.makePackages vars;
 
     darwinConfigurations = {
-      "mac" = base.inputs.darwin.lib.darwinSystem {
+      "mac" = darwin.lib.darwinSystem {
         modules =
-          base.outputs.sharedModules
+          [
+            {nixpkgs.hostPlatform = "aarch64-darwin";}
+          ]
+          # Import base modules (SPLIT modules pattern)
+          ++ base.outputs.sharedModules
           ++ base.outputs.macModules
           ++ [
-            {nixpkgs.hostPlatform = system.darwin.aarch;}
+            # Personal overrides
             (
               {vars, ...}: {
                 home-manager.users.${vars.user.name} = import ./hosts/shared/import-hm.nix;
@@ -56,7 +66,11 @@
             ./hosts/darwin/import.nix
             (import ./hosts/darwin/homebrew.nix)
           ];
-        specialArgs = {inherit vars;};
+
+        specialArgs = {
+          inherit vars;
+          baseLib = base.lib;
+        };
       };
     };
 

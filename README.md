@@ -1,5 +1,8 @@
 # nix-personal
 
+> [!WARNING]
+> This repository has been merged into [dotfiles.nix](https://github.com/ojsef39/dotfiles.nix). Please refer to that repository for the latest configuration.
+
 # nix-base
 
 [![Build Status](https://github.com/ojsef39/nix-personal/actions/workflows/validate.yml/badge.svg)](https://github.com/ojsef39/nix-personal/actions/workflows/validate.yml)
