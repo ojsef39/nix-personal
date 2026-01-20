@@ -35,6 +35,7 @@
       kitty.project_selector = "~/.config";
       cache.community = true;
       is_vm = false;
+      kubectl-debug.imageName = "kubectl-debug";
     };
     system.darwin.aarch = "aarch64-darwin";
   in {
