@@ -13,13 +13,13 @@
         "spicetify-nix": "spicetify-nix"
       },
       "locked": {
-        "lastModified": 1768909360,
-        "narHash": "sha256-zI5ohgLRsr9kp8tUQASpsM1gFW+aexjIH9zBQNPZCh4=",
-        "path": "/Users/josefhofer/CodeProjects/github.com/ojsef39/nix-base/",
+        "lastModified": 1768939779,
+        "narHash": "sha256-LVf8uaqiMx5frzhFx6vHoNBzCAY+YPIi+sKkdDhWVb8=",
+        "path": "/Users/josefhofer/CodeProjects/github.com/ojsef39/dotfiles.nix/",
         "type": "path"
       },
       "original": {
-        "path": "/Users/josefhofer/CodeProjects/github.com/ojsef39/nix-base/",
+        "path": "/Users/josefhofer/CodeProjects/github.com/ojsef39/dotfiles.nix/",
         "type": "path"
       }
     },
@@ -244,12 +244,12 @@
         ]
       },
       "locked": {
-        "lastModified": 1768893778,
-        "narHash": "sha256-iSHEptqSun9Ryl1NgoKguJAjRHAFO3k9bQ9bB+UpCNA=",
-        "rev": "895eddbee851630201154725c22e94ecd8232dbf",
-        "revCount": 6122,
+        "lastModified": 1768927746,
+        "narHash": "sha256-zyMpWHqcpKVmRc1W2NEK7DAuyVJZV62Jdjqudg70b1k=",
+        "rev": "63a87808f5f9b6e4195a1d33f6ea25d23f4aa0df",
+        "revCount": 6125,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/nix-community/home-manager/0.1.6122%2Brev-895eddbee851630201154725c22e94ecd8232dbf/019bda4a-5f00-776b-bc75-81f2a878b2ea/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/nix-community/home-manager/0.1.6125%2Brev-63a87808f5f9b6e4195a1d33f6ea25d23f4aa0df/019bdc50-768a-7999-8e47-d3d52e06f998/source.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -496,6 +496,10 @@
           "base",
           "darwin"
         ],
+        "determinate": [
+          "base",
+          "determinate"
+        ],
         "home-manager": [
           "base",
           "home-manager"
@@ -504,9 +508,17 @@
           "base",
           "nixcord"
         ],
+        "nixkit": [
+          "base",
+          "nixkit"
+        ],
         "nixpkgs": [
           "base",
           "nixpkgs"
+        ],
+        "spicetify-nix": [
+          "base",
+          "spicetify-nix"
         ]
       }
     },
