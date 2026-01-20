@@ -14,7 +14,10 @@
 #  See your own values with for example: `defaults read com.apple.dock tilesize`
 #
 ###################################################################################
-{
+let
+  hmUser = config.home-manager.users.${vars.user.name};
+  hmApps = "${hmUser.home.homeDirectory}/${hmUser.targets.darwin.copyApps.directory}";
+in {
   system = {
     defaults = {
       dock = {
@@ -26,18 +29,14 @@
           "/System/Applications/Calendar.app"
           "/Applications/WhatsApp.app"
           "/System/Applications/Messages.app"
-          "${
-            config.home-manager.users.${vars.user.name}.programs.nixcord.vesktop.package
-          }/Applications/Vesktop.app"
-          "${pkgs.obsidian}/Applications/Obsidian.app"
+          "${hmApps}/Vesktop.app"
+          "/Applications/Nix Apps/Obsidian.app"
           "/Applications/Things3.app"
           "/Applications/Linear.app"
-          "${pkgs.kitty}/Applications/kitty.app"
-          "${pkgs.utm}/Applications/UTM.app"
-          "${pkgs.moonlight-qt}/Applications/Moonlight.app"
-          "${
-            config.home-manager.users.${vars.user.name}.programs.spicetify.spicedSpotify
-          }/Applications/Spotify.app"
+          "${hmApps}/kitty.app"
+          "/Applications/Nix Apps/UTM.app"
+          "/Applications/Nix Apps/Moonlight.app"
+          "${hmApps}/Spotify.app"
           # "/System//Applications/Music.app"
           "/Applications/Reeder.localized/Reeder.app"
           "/System//Applications/System Settings.app"
