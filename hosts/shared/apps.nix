@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    wireshark
+    # wireshark # broken
     ## media stuff
     yt-dlp
     moonlight-qt
