@@ -4,5 +4,7 @@
     ## media stuff
     yt-dlp
     moonlight-qt
+    # packages from base
+    kubectl-debug
   ];
 }
